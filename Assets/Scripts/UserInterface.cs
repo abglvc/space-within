@@ -3,37 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserInterface : MonoBehaviour
-{
+public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText;
-    
+
     private Rigidbody2D rb;
 
-    private void Awake()
-    {
+    private void Awake() {
         if (sng == null) sng = this;
-        else
-        {
+        else {
             Destroy(sng);
             sng = this;
         }
     }
-    
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
     }
 
-    public void UpdateScore(int score)
-    {
+    public void UpdateScore(int score) {
         scoreText.text = score.ToString();
     }
 }

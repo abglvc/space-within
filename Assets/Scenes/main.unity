@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af61ab3ee89deca4397826adf1b96aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 561678120}
   speed: 5
   xMin: 0
 --- !u!20 &519420031
@@ -786,10 +785,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleHeap: {fileID: 2070600090}
-  obstacles:
-  - {fileID: 3148551649530973358, guid: 6b8ff4cc24bae6f4c80192f42e7bda44, type: 3}
-  - {fileID: -3560921712420862623, guid: 4dcebde314fe288428dadc3628f2679e, type: 3}
-  - {fileID: 5399332289414822342, guid: 797b60cad16a8e843b7ccbd23980470f, type: 3}
+  obstaclePools:
+  - objectPrefab: {fileID: 1356593616132633314, guid: 6b8ff4cc24bae6f4c80192f42e7bda44,
+      type: 3}
+    maxObjects: 2
+  - objectPrefab: {fileID: 6275085607226713149, guid: 4dcebde314fe288428dadc3628f2679e,
+      type: 3}
+    maxObjects: 2
+  - objectPrefab: {fileID: 8326093186828830602, guid: 797b60cad16a8e843b7ccbd23980470f,
+      type: 3}
+    maxObjects: 2
 --- !u!1 &2070600089
 GameObject:
   m_ObjectHideFlags: 0
