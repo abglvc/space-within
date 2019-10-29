@@ -20,35 +20,7 @@ public class Obstacle : MonoBehaviour {
         get => activeObstacle;
         set {
             activeObstacle = value;
-            Debug.Log(this.GetHashCode() + " active: " + value);
             gameObject.SetActive(activeObstacle);
-        }
-    }
-}
-
-[System.Serializable]
-public class ObjectPool {
-    public Object objectPrefab;
-    public int maxObjects=3;
-    
-    private List<Object> pooledObjects=new List<Object>();
-
-    public Object GetNewObject(Transform spawnOn) {
-        foreach (Object obj in pooledObjects)
-            if (obj is Obstacle && !((Obstacle) obj).ActiveObstacle)
-                return obj;
-
-        if (pooledObjects.Count < maxObjects) {
-            Object x = MonoBehaviour.Instantiate(objectPrefab, spawnOn);
-            pooledObjects.Add(x);
-            return x;
-        }
-        return null;
-    }
-
-    public void DeactivateAllAlive() {
-        foreach (Object obj in pooledObjects) {
-            if (obj is Obstacle) ((Obstacle)obj).ActiveObstacle = false;
         }
     }
 }

@@ -785,14 +785,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleHeap: {fileID: 2070600090}
-  obstaclePools:
-  - objectPrefab: {fileID: 1356593616132633314, guid: 6b8ff4cc24bae6f4c80192f42e7bda44,
+  obstaclesPool:
+  - objectPrefab: {fileID: 3148551649530973358, guid: 6b8ff4cc24bae6f4c80192f42e7bda44,
       type: 3}
     maxObjects: 2
-  - objectPrefab: {fileID: 6275085607226713149, guid: 4dcebde314fe288428dadc3628f2679e,
+  - objectPrefab: {fileID: -3560921712420862623, guid: 4dcebde314fe288428dadc3628f2679e,
       type: 3}
     maxObjects: 2
-  - objectPrefab: {fileID: 8326093186828830602, guid: 797b60cad16a8e843b7ccbd23980470f,
+  - objectPrefab: {fileID: 5399332289414822342, guid: 797b60cad16a8e843b7ccbd23980470f,
       type: 3}
     maxObjects: 2
 --- !u!1 &2070600089

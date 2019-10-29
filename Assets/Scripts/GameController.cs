@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using MyObjectPooling;
 
 public class GameController : MonoBehaviour {
     public static GameController sng { get; private set; } //singletone
     public Transform obstacleHeap;
-    public ObjectPool[] obstaclePools;
+    public ObstaclePool[] obstaclesPool;
     private PlayerController player;
     private float nextObstacleX = 0f;
 
@@ -27,9 +30,8 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (player.transform.position.x + 15f > nextObstacleX) {
-            Object ret = obstaclePools[Random.Range(0, obstaclePools.Length)].GetNewObject(obstacleHeap);
-            if (ret != null) {
-                Obstacle obstacle = ((GameObject)ret).GetComponent<Obstacle>();
+            Obstacle obstacle = obstaclesPool[Random.Range(0,obstaclesPool.Length)].GetFromPool(obstacleHeap);
+            if (obstacle != null) {
                 obstacle.transform.position = new Vector3(nextObstacleX, 0, 0);
                 obstacle.ActiveObstacle = true;
                 nextObstacleX += obstacle.width;
