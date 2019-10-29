@@ -8,6 +8,7 @@ using MyObjectPooling;
 public class GameController : MonoBehaviour {
     public static GameController sng { get; private set; } //singletone
     public Transform obstacleHeap;
+    public ObstaclePackPool[] obstaclePacksPool;
     public ObstaclePool[] obstaclesPool;
     private PlayerController player;
     private float nextObstacleX = 0f;
@@ -30,10 +31,10 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (player.transform.position.x + 15f > nextObstacleX) {
-            Obstacle obstacle = obstaclesPool[Random.Range(0,obstaclesPool.Length)].GetFromPool(obstacleHeap);
+            ObstaclePack obstacle = obstaclePacksPool[Random.Range(0,obstaclePacksPool.Length)].GetFromPool(obstacleHeap);
             if (obstacle != null) {
                 obstacle.transform.position = new Vector3(nextObstacleX, 0, 0);
-                obstacle.ActiveObstacle = true;
+                obstacle.ActiveObstaclePack = true;
                 nextObstacleX += obstacle.width;
             }
         }

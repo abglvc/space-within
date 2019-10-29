@@ -7,8 +7,6 @@ public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText;
 
-    private Rigidbody2D rb;
-
     private void Awake() {
         if (sng == null) sng = this;
         else {

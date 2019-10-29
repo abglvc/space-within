@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public class PlayerController : MonoBehaviour {
     public static PlayerController sng { get; private set; } //singletone
     public int health;
-
     public float gravityCoeff;
     public float speed;
     public bool topOriented;
-
-
+    
     private Rigidbody2D rb;
 
     private void Awake() {
@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Initialize();
-        rb.velocity = Vector2.right * speed;
     }
 
     // Update is called once per frame
@@ -36,22 +35,29 @@ public class PlayerController : MonoBehaviour {
         UserInterface.sng.UpdateScore(Mathf.FloorToInt(transform.position.x));
     }
 
+    public void OnGravityDirectionButton(int k) {
+        if (health > 0 && (k == 1 && rb.gravityScale < 0 && topOriented) ||
+            k == -1 && rb.gravityScale > 0 && !topOriented)
+            rb.gravityScale *= -1;
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if (health > 0) {
             if (other.collider.CompareTag("Obstacle")) {
-                topOriented = other.GetContact(0).point.y > transform.position.y;
-                rb.velocity = Vector2.right * speed;
+                Vector2 pointDifference = other.GetContact(0).point-(Vector2)transform.position;
+                if(Mathf.Abs(pointDifference.y)>0.2f) topOriented = pointDifference.y > 0;
+                if (Mathf.Abs(pointDifference.x) < 0.25f) rb.velocity = Vector2.right * speed;
             }
             else if (other.collider.CompareTag("Obstahurt")) {
                 Health -= other.gameObject.GetComponentInParent<Obstahurt>().damage;
-                Debug.Log("HIT");
+                Debug.Log("IT HITS YOU");
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Obstacle") && other.isTrigger) {
-            other.GetComponent<Obstacle>().ActiveObstacle = false;
+    private void OnTriggerEnter2D(Collider2D other) { //Vracanje prepreka u pool!
+        if (other.gameObject.CompareTag("ObstaclePack") && other.isTrigger) {
+            other.GetComponent<ObstaclePack>().ActiveObstaclePack = false;
         }
     }
 
@@ -59,6 +65,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = gravityCoeff;
         topOriented = true;
+        rb.velocity = Vector2.right * speed;
     }
 
     public int Health {

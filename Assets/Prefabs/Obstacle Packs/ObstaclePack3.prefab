@@ -333,11 +333,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 657866263911434873}
-  - component: {fileID: 5399332289414822342}
+  - component: {fileID: 8562917409134898860}
   - component: {fileID: 3488088685975716139}
   m_Layer: 0
-  m_Name: Obstacle3
-  m_TagString: Obstacle
+  m_Name: ObstaclePack3
+  m_TagString: ObstaclePack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5399332289414822342
+--- !u!114 &8562917409134898860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -372,10 +372,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8326093186828830602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743ce1be5c3c9f34d8ff85cc4c90d83b, type: 3}
+  m_Script: {fileID: 11500000, guid: 17ae477365450164d8209a2a435fe61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 25
+  height: 10
 --- !u!61 &3488088685975716139
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -389,7 +390,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 35, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -400,7 +401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 12}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8326093187392299896
 GameObject:
@@ -517,11 +518,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 657866263911434873}
     m_Modifications:
-    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstahurt1 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 8985705870214286358, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -577,6 +573,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstahurt1 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37eacadcedfde3f4cb6d66c34a21fc14, type: 3}
 --- !u!4 &8479170352871522980 stripped
@@ -592,11 +593,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 657866263911434873}
     m_Modifications:
-    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstahurt1 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8985705870214286358, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,6 +648,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstahurt1 (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37eacadcedfde3f4cb6d66c34a21fc14, type: 3}
 --- !u!4 &1622389881806906366 stripped
@@ -667,11 +668,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 657866263911434873}
     m_Modifications:
-    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstahurt1
-      objectReference: {fileID: 0}
     - target: {fileID: 8985705870214286358, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -726,6 +722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985705870214286345, guid: 37eacadcedfde3f4cb6d66c34a21fc14,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstahurt1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37eacadcedfde3f4cb6d66c34a21fc14, type: 3}

@@ -7,10 +7,10 @@ public class CameraController : MonoBehaviour {
     private Vector3 newPosition;
     public float speed;
     public float xMin;
-    public static float aspect_multiplier;
+    public static float aspectMultiplier;
 
     void Awake() {
-        aspect_multiplier = GetComponent<Camera>().aspect / (16f / 9);
+        aspectMultiplier = GetComponent<Camera>().aspect / (16f / 9);
     }
 
     void Start() {

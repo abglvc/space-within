@@ -5,22 +5,16 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
     public float width;
-    protected bool activeObstacle=true;
-    
+    public float height;
+
+
     // Start is called before the first frame update
     void Start() {
+        
     }
 
     // Update is called once per frame
     void Update() {
         
-    }
-
-    public bool ActiveObstacle {
-        get => activeObstacle;
-        set {
-            activeObstacle = value;
-            gameObject.SetActive(activeObstacle);
-        }
     }
 }

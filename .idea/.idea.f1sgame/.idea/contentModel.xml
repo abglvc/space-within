@@ -11,6 +11,7 @@
           <e p="GameController.cs" t="Include" />
           <e p="ObjectPool.cs" t="Include" />
           <e p="Obstacle.cs" t="Include" />
+          <e p="ObstaclePack.cs" t="Include" />
           <e p="Obstahurt.cs" t="Include" />
           <e p="Pickup.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />

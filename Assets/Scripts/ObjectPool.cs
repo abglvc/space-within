@@ -11,7 +11,7 @@ namespace MyObjectPooling {
 
         public T GetFromPool(Transform spawnOn) {
             foreach (T obj in pooledObjects)
-                if (obj is Obstacle && !(obj as Obstacle).ActiveObstacle)
+                if (obj is ObstaclePack && !(obj as ObstaclePack).ActiveObstaclePack)
                     return obj;
 
             if (pooledObjects.Count < maxObjects) {
@@ -25,13 +25,13 @@ namespace MyObjectPooling {
 
         public void DeactivateAllAlive() {
             foreach (T obj in pooledObjects) {
-                if (obj is Obstacle) (obj as Obstacle).ActiveObstacle = false;
+                if (obj is ObstaclePack) (obj as ObstaclePack).ActiveObstaclePack = false;
             }
         }
     }
-    
+
     [System.Serializable]
-    public class ObstaclePool : ObjectPool<Obstacle> {
-    }
-    
+    public class ObstaclePool : ObjectPool<Obstacle> {}
+    [System.Serializable]
+    public class ObstaclePackPool : ObjectPool<ObstaclePack> {}
 }

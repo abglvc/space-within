@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Obstahurt
+  - ObstaclePack
   layers:
   - Default
   - TransparentFX

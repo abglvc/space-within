@@ -333,11 +333,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6275085607226713138}
-  - component: {fileID: -3560921712420862623}
+  - component: {fileID: 2461906014259054633}
   - component: {fileID: 6636999183180262309}
   m_Layer: 0
-  m_Name: Obstacle2
-  m_TagString: Obstacle
+  m_Name: ObstaclePack2
+  m_TagString: ObstaclePack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,7 +359,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3560921712420862623
+--- !u!114 &2461906014259054633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,10 +368,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6275085607226713149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 743ce1be5c3c9f34d8ff85cc4c90d83b, type: 3}
+  m_Script: {fileID: 11500000, guid: 17ae477365450164d8209a2a435fe61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   width: 25
+  height: 10
 --- !u!61 &6636999183180262309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 35, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -396,5 +397,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 12}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
