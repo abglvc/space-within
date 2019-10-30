@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour {
     public int health;
     public float gravityCoeff;
     public float speed;
+    public float recoveryTime;
     public bool topOriented;
     
     private Rigidbody2D rb;
-
+    private bool isRecovering = false;
+    
     private void Awake() {
         if (sng == null) sng = this;
         else {
@@ -22,12 +24,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Start is called before the first frame update
     void Start() {
         Initialize();
     }
-
-    // Update is called once per frame
+    
     void Update() {
         if (health > 0 && (Input.GetKeyDown(KeyCode.DownArrow) && rb.gravityScale < 0 && topOriented ||
                            Input.GetKeyDown(KeyCode.UpArrow) && rb.gravityScale > 0 && !topOriented))
@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour {
             }
             else if (other.collider.CompareTag("Obstahurt")) {
                 Health -= other.gameObject.GetComponentInParent<Obstahurt>().damage;
-                Debug.Log("IT HITS YOU");
             }
         }
     }
@@ -66,15 +65,36 @@ public class PlayerController : MonoBehaviour {
         rb.gravityScale = gravityCoeff;
         topOriented = true;
         rb.velocity = Vector2.right * speed;
+        UserInterface.sng.UpdateHealth(health);
     }
-
+    
+    private IEnumerator DamageRecovery(float tickTime) {
+        isRecovering = true;
+        WaitForSeconds tick = new WaitForSeconds(tickTime);
+        float tRecovery = recoveryTime;
+        SpriteRenderer spr = GetComponent<SpriteRenderer>();
+        while (tRecovery > 0) {
+            spr.enabled = !spr.enabled;
+            UserInterface.sng.damageSplash.SetActive(!UserInterface.sng.damageSplash.activeSelf);
+            tRecovery -= tickTime;
+            yield return tick;
+        }
+        spr.enabled = true;
+        isRecovering = false;
+        UserInterface.sng.damageSplash.SetActive(false);
+    }
+    
     public int Health {
         get => health;
         set {
-            health = value;
-
-            if (health <= 0) {
-                //GAMEOVER
+            if (!isRecovering) {
+                Debug.Log("IT HITS YOU");
+                health = value;
+                UserInterface.sng.UpdateHealth(health);
+                if (health <= 0) {
+                    UserInterface.sng.ripSplash.SetActive(true);
+                }
+                else StartCoroutine(DamageRecovery(0.1f));
             }
         }
     }

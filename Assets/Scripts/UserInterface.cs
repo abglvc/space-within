@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText;
-
+    public Text healthText;
+    public GameObject ripSplash;
+    public GameObject damageSplash;
+    
     private void Awake() {
         if (sng == null) sng = this;
         else {
@@ -25,5 +28,9 @@ public class UserInterface : MonoBehaviour {
 
     public void UpdateScore(int score) {
         scoreText.text = score.ToString();
+    }
+
+    public void UpdateHealth(int health) {
+        healthText.text = health.ToString();
     }
 }

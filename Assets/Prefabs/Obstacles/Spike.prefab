@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8985705869828793126}
   m_Layer: 0
   m_Name: New Sprite
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,8 +229,8 @@ GameObject:
   - component: {fileID: 8985705870214286358}
   - component: {fileID: 1135332357772481911}
   m_Layer: 0
-  m_Name: Obstahurt1
-  m_TagString: Untagged
+  m_Name: Spike
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

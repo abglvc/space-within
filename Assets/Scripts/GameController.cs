@@ -31,11 +31,11 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (player.transform.position.x + 15f > nextObstacleX) {
-            ObstaclePack obstacle = obstaclePacksPool[Random.Range(0,obstaclePacksPool.Length)].GetFromPool(obstacleHeap);
-            if (obstacle != null) {
-                obstacle.transform.position = new Vector3(nextObstacleX, 0, 0);
-                obstacle.ActiveObstaclePack = true;
-                nextObstacleX += obstacle.width;
+            ObstaclePack obstaclePack = obstaclePacksPool[Random.Range(0,obstaclePacksPool.Length)].GetFromPool(obstacleHeap);
+            if (obstaclePack != null) {
+                obstaclePack.transform.position = new Vector3(nextObstacleX+obstaclePack.width/2, 0, 0);
+                obstaclePack.ActiveObstaclePack = true;
+                nextObstacleX += obstaclePack.width;
             }
         }
     }

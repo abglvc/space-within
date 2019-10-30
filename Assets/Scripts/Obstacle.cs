@@ -4,9 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
-    public float width;
-    public float height;
-
+    protected bool activeObstacle;
 
     // Start is called before the first frame update
     void Start() {
@@ -16,5 +14,13 @@ public class Obstacle : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         
+    }
+    
+    public bool ActiveObstacle {
+        get => activeObstacle;
+        set {
+            activeObstacle = value;
+            gameObject.SetActive(activeObstacle);
+        }
     }
 }

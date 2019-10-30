@@ -11,7 +11,7 @@ namespace MyObjectPooling {
 
         public T GetFromPool(Transform spawnOn) {
             foreach (T obj in pooledObjects)
-                if (obj is ObstaclePack && !(obj as ObstaclePack).ActiveObstaclePack)
+                if (obj is Obstacle && !(obj as Obstacle).ActiveObstacle || obj is ObstaclePack && !(obj as ObstaclePack).ActiveObstaclePack)
                     return obj;
 
             if (pooledObjects.Count < maxObjects) {
@@ -26,6 +26,7 @@ namespace MyObjectPooling {
         public void DeactivateAllAlive() {
             foreach (T obj in pooledObjects) {
                 if (obj is ObstaclePack) (obj as ObstaclePack).ActiveObstaclePack = false;
+                else if (obj is Obstacle) (obj as Obstacle).ActiveObstacle = false;
             }
         }
     }
