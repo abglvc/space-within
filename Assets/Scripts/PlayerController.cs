@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
         UserInterface.sng.UpdateScore(Mathf.FloorToInt(transform.position.x));
     }
 
-    public void OnGravityDirectionButton(int k) {
+    public void OnGravityDirectionChange(int k) {
         if (health > 0 && (k == 1 && rb.gravityScale < 0 && topOriented) ||
             k == -1 && rb.gravityScale > 0 && !topOriented)
             rb.gravityScale *= -1;
