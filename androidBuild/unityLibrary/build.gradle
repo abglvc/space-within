@@ -5,7 +5,6 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation(name: 'lelo_sdk_ble_f1_android_lib-debug', ext:'aar')
 }
 
 android {

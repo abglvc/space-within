@@ -27,15 +27,7 @@
         android:name="android.hardware.touchscreen.multitouch.distinct"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <application
-        android:allowBackup="true"
-        android:debuggable="true"
-        android:label="@string/app_name"
-        android:supportsRtl="true" >
+    <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
 
         <activity
@@ -70,9 +62,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="4f8c5d29-43d5-4d90-8fa7-12ceb089b93b" />
-
-        <service android:name="com.lelo.sdk.ble.lelo_sdk_ble_f1_android_lib.BluetoothLeServiceLeloF1" />
+            android:value="d59a472d-8bf2-4a3e-929a-1dc329560659" />
     </application>
 
 </manifest>

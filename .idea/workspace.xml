@@ -2,11 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45fe06db-e89e-4e74-a2e7-bf60fc8cef09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/f1sgame.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Android/OverrideUnityActivity.java.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/java/com/lelo/f1s/OverrideUnityActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.f1sgame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.f1sgame/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.f1sgame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.f1sgame/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UserInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/.transforms/243e35cdbc9d97049d61d9a28605f801.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/.transforms/243e35cdbc9d97049d61d9a28605f801/full/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/.transforms/e5146f2eb9454265c001af16d1554bf8.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/generated/source/buildConfig/debug/com/unity3d/player/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/generated/source/buildConfig/debug/com/unity3d/player/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/compile_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/compile_library_classes/debug/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/compile_only_not_namespaced_r_class_jar/debug/generateDebugRFile/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/full_jar/debug/createFullJarDebug/full.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/javac/debug/classes/com/unity3d/player/BuildConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/javac/debug/classes/com/unity3d/player/UnityPlayerActivity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.Subsystem.Registration.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.Subsystem.Registration.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.Timeline.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.XR.Management.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/Unity.XR.Management.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/Managed/UnityEngine.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/boot.config" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/boot.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/data.unity3d" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_assets/debug/out/bin/Data/data.unity3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/library_manifest/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/local_only_symbol_list/debug/parseDebugLibraryResources/R-def.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/manifest_merge_blame_file/debugAndroidTest/manifest-merger-blame-debug-androidTest-report.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_manifests/debugAndroidTest/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libMonoPosixHelper.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libmain.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libmonobdwgc-2.0.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libswappy.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libswappyVk.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/merged_native_libs/debug/out/lib/armeabi-v7a/libunity.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/runtime_library_classes/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/runtime_library_classes/debug/classes.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libMonoPosixHelper.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libmain.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libmonobdwgc-2.0.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libswappy.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libswappyVk.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/intermediates/stripped_native_libs/debug/out/lib/armeabi-v7a/libunity.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.Subsystem.Registration.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.Subsystem.Registration.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.Timeline.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.XR.Management.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/Unity.XR.Management.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/Managed/UnityEngine.UI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/boot.config" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/boot.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/data.unity3d" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/src/main/assets/bin/Data/data.unity3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/androidBuild/unityLibrary/unityLibrary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/androidBuild/unityLibrary/unityLibrary.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,18 +81,22 @@
     <option name="width" value="1440" />
     <option name="height" value="815" />
   </component>
+  <component name="ProjectId" id="1T9f1eguOyoQiTq7qaHBv2Wti85" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/androidBuild" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,6 +120,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572609586207</updated>
+      <workItem from="1572877022040" duration="18000" />
     </task>
     <servers />
   </component>
