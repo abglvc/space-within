@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour {
     }
 
     void Start() {
-        target = PlayerController.sng.transform;
+        target = Player.sng.transform;
         if (target)
             transform.position = new Vector3(Mathf.Max(xMin, target.transform.position.x + 5f), transform.position.y,
                 transform.position.z);

@@ -5,16 +5,17 @@ using System.Numerics;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
-public class PlayerController : MonoBehaviour {
-    public static PlayerController sng { get; private set; } //singletone
+public class Player : MonoBehaviour {
+    public static Player sng { get; private set; } //singletone
     public int health;
-    public float gravityCoeff;
-    public float speed;
+    public float verticalSpeed;
+    public float horizontalSpeed;
     public float recoveryTime;
-    public bool topOriented;
+    private bool topOriented;
     
     private Rigidbody2D rb;
     private bool isRecovering = false;
+    private int previousDepth = 0;
     
     private void Awake() {
         if (sng == null) sng = this;
@@ -35,18 +36,12 @@ public class PlayerController : MonoBehaviour {
         UserInterface.sng.UpdateScore(Mathf.FloorToInt(transform.position.x));
     }
 
-    public void OnGravityDirectionChange(int k) {
-        if (health > 0 && (k == 1 && rb.gravityScale < 0 && topOriented) ||
-            k == -1 && rb.gravityScale > 0 && !topOriented)
-            rb.gravityScale *= -1;
-    }
-
     private void OnCollisionEnter2D(Collision2D other) {
         if (health > 0) {
             if (other.collider.CompareTag("Obstacle")) {
                 Vector2 pointDifference = other.GetContact(0).point-(Vector2)transform.position;
                 if(Mathf.Abs(pointDifference.y)>0.2f) topOriented = pointDifference.y > 0;
-                if (Mathf.Abs(pointDifference.x) < 0.25f) rb.velocity = Vector2.right * speed;
+                if (pointDifference.x < 0.25f) rb.velocity = Vector2.right * horizontalSpeed;
             }
             else if (other.collider.CompareTag("Obstahurt")) {
                 Health -= other.gameObject.GetComponentInParent<Obstahurt>().damage;
@@ -62,11 +57,28 @@ public class PlayerController : MonoBehaviour {
 
     public void Initialize() {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = gravityCoeff;
+        rb.gravityScale = verticalSpeed;
         topOriented = true;
-        rb.velocity = Vector2.right * speed;
+        rb.velocity = Vector2.right * horizontalSpeed;
         UserInterface.sng.UpdateHealth(health);
     }
+
+    public void UpdateDepth(int depth) {
+        Debug.Log("UPDATE DEPTH IN UNITY");
+        OnGravityDirectionChange((int) Mathf.Sign(previousDepth-depth));
+        UserInterface ui=UserInterface.sng;
+        for(int i=Mathf.Min(previousDepth, depth); i<Mathf.Max(previousDepth, depth); i++)
+            if (previousDepth <= depth)
+                ui.EnableDepthSensor(i, true);
+            else ui.EnableDepthSensor(i, false);
+        previousDepth = depth;
+    }
+    
+    public void OnGravityDirectionChange(int k) {
+        if (health > 0 && (k == 1 && rb.gravityScale < 0 && topOriented) ||
+            k == -1 && rb.gravityScale > 0 && !topOriented)
+            rb.gravityScale *= -1;
+    }    
     
     private IEnumerator DamageRecovery(float tickTime) {
         isRecovering = true;

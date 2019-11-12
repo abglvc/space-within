@@ -25,8 +25,9 @@ public class ObstaclePack : MonoBehaviour {
         for (int i=0; i<obstaclePlaceIndex.Count; i++) {
             Obstacle o = gc.obstaclesPool[obstaclePlaceIndex[i].index].GetFromPool(gc.obstacleHeap);
             if (o != null) {
-                o.transform.position = obstaclePlaceIndex[i].transf.position;
-                o.transform.rotation = obstaclePlaceIndex[i].transf.rotation;
+                Transform t = o.transform;
+                t.position = obstaclePlaceIndex[i].transf.position;
+                t.rotation = obstaclePlaceIndex[i].transf.rotation;
                 o.ActiveObstacle = true;
                 attachedObstacles[i] = o;
             }

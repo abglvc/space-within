@@ -26,29 +26,34 @@ public class UserInterface : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        InitialiseSensorVisuals();
+        Initialize();
     }
 
     // Update is called once per frame
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+            Application.Quit(); 
     }
 
-    public void VisualSensorUpdate() {
-        int sensVal = (int)sensorSlider.value;
-        PlayerController.sng.OnGravityDirectionChange((int) Mathf.Sign(previousDepth-sensVal));
-        for(int i=Mathf.Min(previousDepth, sensVal); i<Mathf.Max(previousDepth, sensVal); i++)
-            if (previousDepth <= sensVal)
-                sensors[i].color = sensorOnColor;
-            else sensors[i].color = sensorOffColor;
-        previousDepth = sensVal;
+    public void SliderDepthSensorUpdate() {
+        Player.sng.UpdateDepth((int)sensorSlider.value);
+    }
+
+    public void EnableDepthSensor(int i, bool b) {
+        sensors[i].color = b ? sensorOnColor : sensorOffColor;
+    }
+
+    private void Initialize() {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        InitialiseSensorVisuals();
     }
 
     private void InitialiseSensorVisuals() {
         previousDepth = (int)sensorSlider.value;
         for(int i=0; i<sensors.Length; i++)
             if (i < sensorSlider.value)
-                sensors[i].color = sensorOnColor;
-            else sensors[i].color = sensorOffColor;
+                EnableDepthSensor(i, true);
+            else EnableDepthSensor(i, false);
     }
 
     public void UpdateScore(int score) {

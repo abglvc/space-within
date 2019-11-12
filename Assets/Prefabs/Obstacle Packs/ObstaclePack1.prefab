@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 25
-  height: 10
+  height: 8
   obstaclePlaceIndex:
   - transf: {fileID: 1790509135200692986}
     index: 0
