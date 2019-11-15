@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class F1SLink : MonoBehaviour {
     private Player p;
@@ -19,8 +18,11 @@ public class F1SLink : MonoBehaviour {
         p.UpdateDepth(Int32.Parse(s));
     }
 
+    public void AttackSignal(String s) {
+        p.Attack();
+    }
+
     void Update() {
-        
     }
 
     private void Initialize() {

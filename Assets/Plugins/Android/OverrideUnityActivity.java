@@ -9,6 +9,7 @@ public abstract class OverrideUnityActivity extends UnityPlayerActivity
     
     abstract protected void showMainActivity(String setToColor);
     abstract public void UpdateDepthFromSensor(Integer x);
+    abstract public void UpdateAccelerationRate(Integer x, Integer y, Integer z);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
