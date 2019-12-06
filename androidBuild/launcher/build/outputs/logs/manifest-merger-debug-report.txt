@@ -4,7 +4,7 @@ ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\An
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
-MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:3:1-63:12
+MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:3:1-66:12
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
 INJECTED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:3:1-6:12
@@ -40,8 +40,8 @@ ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\An
 		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:4:135-160
 application
 ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:5:3-83
-MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:5-61:19
-MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:5-61:19
+MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:5-64:19
+MERGED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:5-64:19
 	android:label
 		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\launcher\src\main\AndroidManifest.xml:5:16-48
 	android:icon
@@ -72,81 +72,85 @@ ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unit
 		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-33
 	android:name
 		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:9-47
-uses-feature#android.hardware.touchscreen
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-19:36
-	android:required
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-33
+uses-permission#android.permission.INTERNET
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:5-67
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-52
-uses-feature#android.hardware.touchscreen.multitouch
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:22-64
+uses-feature#android.hardware.touchscreen
 ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:5-22:36
 	android:required
 		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-33
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-63
-uses-feature#android.hardware.touchscreen.multitouch.distinct
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-52
+uses-feature#android.hardware.touchscreen.multitouch
 ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:5-25:36
 	android:required
 		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-33
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-72
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-63
+uses-feature#android.hardware.touchscreen.multitouch.distinct
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:5-28:36
+	android:required
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:9-33
+	android:name
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:9-72
 activity#com.unity3d.player.UnityPlayerActivity
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:9-47:20
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:9-50:20
 	android:screenOrientation
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:13-56
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:13-56
 	android:launchMode
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:32:13-44
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-44
 	android:hardwareAccelerated
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:13-48
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-48
 	android:configChanges
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:13-194
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:13-194
 	android:theme
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-54
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-54
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-66
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:32:13-66
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-39:29
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-42:29
 action#android.intent.action.MAIN
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:17-69
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:17-69
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:25-66
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:25-66
 category#android.intent.category.LAUNCHER
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:17-77
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:41:17-77
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:27-74
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:41:27-74
 meta-data#unityplayer.UnityActivity
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-43:40
-	android:value
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:43:17-37
-	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:42:17-57
-meta-data#android.notch_support
 ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:44:13-46:40
 	android:value
 		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:46:17-37
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:45:17-53
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:45:17-57
+meta-data#android.notch_support
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:47:13-49:40
+	android:value
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:49:17-37
+	android:name
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:48:17-53
 meta-data#unity.splash-mode
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:49:9-51:33
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:52:9-54:33
 	android:value
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:51:13-30
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:54:13-30
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:50:13-45
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:53:13-45
 meta-data#unity.splash-enable
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:52:9-54:36
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:55:9-57:36
 	android:value
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:54:13-33
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:57:13-33
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:53:13-47
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:56:13-47
 meta-data#notch.config
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:55:9-57:50
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:58:9-60:50
 	android:value
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:57:13-47
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:60:13-47
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:56:13-40
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:59:13-40
 meta-data#unity.build-id
-ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:58:9-60:68
+ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:61:9-63:68
 	android:value
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:60:13-65
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:63:13-65
 	android:name
-		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:59:13-42
+		ADDED from [:unityLibrary] C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:62:13-42

@@ -7,18 +7,37 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="CameraController.cs" t="Include" />
-          <e p="F1SLink.cs" t="Include" />
-          <e p="GameController.cs" t="Include" />
-          <e p="ObjectPool.cs" t="Include" />
-          <e p="Obstacle.cs" t="Include" />
-          <e p="ObstaclePack.cs" t="Include" />
-          <e p="Obstahurt.cs" t="Include" />
-          <e p="Parallax.cs" t="Include" />
-          <e p="ParallaxLayer.cs" t="Include" />
-          <e p="Pickup.cs" t="Include" />
-          <e p="Player.cs" t="Include" />
-          <e p="UserInterface.cs" t="Include" />
+          <e p="Controllers" t="Include">
+            <e p="CameraController.cs" t="Include" />
+            <e p="F1SLink.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+          </e>
+          <e p="Enemies" t="Include">
+            <e p="Enemy.cs" t="Include" />
+          </e>
+          <e p="Obstacles" t="Include">
+            <e p="DestructableObstacle.cs" t="Include" />
+            <e p="Obstacle.cs" t="Include" />
+            <e p="ObstaclePack.cs" t="Include" />
+            <e p="Obstahurt.cs" t="Include" />
+            <e p="Portal.cs" t="Include" />
+            <e p="Projectile.cs" t="Include" />
+            <e p="RotaSpikes.cs" t="Include" />
+            <e p="UnitProjectile.cs" t="Include" />
+          </e>
+          <e p="Other" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="Pickup.cs" t="Include" />
+            <e p="UserInterface.cs" t="Include" />
+          </e>
+          <e p="Parallax" t="Include">
+            <e p="LayerImage.cs" t="Include" />
+            <e p="ParallaxLayer.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="Player.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="f1sgame.sln" t="IncludeFlat" />

@@ -9,6 +9,11 @@ package com.unity3d.player;
 public final class R {
     private R() {}
 
+    public static final class string {
+        private string() {}
+
+        public static final int game_view_content_description = 0x7f020001;
+    }
     public static final class style {
         private style() {}
 

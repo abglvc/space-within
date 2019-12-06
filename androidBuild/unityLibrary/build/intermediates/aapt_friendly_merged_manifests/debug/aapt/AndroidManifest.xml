@@ -14,6 +14,9 @@
     <uses-feature
         android:name="android.hardware.vulkan"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
@@ -57,7 +60,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="b10b47f5-ccf2-4a31-adbf-26223c9a0f5b" />
+            android:value="e8803686-74ac-4afa-a427-e61865f5d988" />
     </application>
 
 </manifest>

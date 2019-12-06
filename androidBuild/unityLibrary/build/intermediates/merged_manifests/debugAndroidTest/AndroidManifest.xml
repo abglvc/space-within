@@ -17,6 +17,9 @@
     <uses-feature
         android:name="android.hardware.vulkan"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
@@ -37,13 +40,12 @@
             android:launchMode="singleTask"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/UnityThemeSelector" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-            -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <meta-data
                 android:name="unityplayer.UnityActivity"
                 android:value="true" />
@@ -63,7 +65,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="b1843a03-9588-4070-8afb-ded629ba633a" />
+            android:value="c9088661-dee1-4ee2-bb72-3bcb073e103a" />
     </application>
 
 </manifest>

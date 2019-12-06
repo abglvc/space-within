@@ -6,8 +6,12 @@ import com.unity3d.player.UnityPlayerActivity;
 public abstract class OverrideUnityActivity extends UnityPlayerActivity
 {
     public static OverrideUnityActivity instance = null;
-    
-    abstract protected void showMainActivity(String setToColor);
+
+    protected int ATTACK_SENSITIVITY=750;
+    protected int previousDepth=0;
+    protected double previousPositionModule=0;
+
+    abstract protected void showMainActivity();
     abstract public void UpdateDepthFromSensor(Integer x);
     abstract public void UpdateAccelerationRate(Integer x, Integer y);
 

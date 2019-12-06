@@ -21,6 +21,9 @@
     <uses-feature
         android:name="android.hardware.vulkan"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
@@ -34,8 +37,7 @@
     <application
         android:debuggable="true"
         android:icon="@mipmap/app_icon"
-        android:label="@string/app_name"
-        android:testOnly="true" >
+        android:label="@string/app_name" >
         <activity
             android:name="com.unity3d.player.UnityPlayerActivity"
             android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
@@ -68,7 +70,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="d59a472d-8bf2-4a3e-929a-1dc329560659" />
+            android:value="e8803686-74ac-4afa-a427-e61865f5d988" />
     </application>
 
 </manifest>
