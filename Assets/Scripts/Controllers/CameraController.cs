@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour {
         Vector2 spriteSize = bgSpriteRenderer.sprite.bounds.size;
         
         Vector2 scale = bgSpriteRenderer.transform.localScale;
-        if (cameraSize.x >= cameraSize.y) { // Landscape (or equal)
+        if (cameraSize.x <= cameraSize.y) { // Landscape (or equal)
             scale *= cameraSize.x / spriteSize.x;
         } else { // Portrait
             scale *= cameraSize.y / spriteSize.y;

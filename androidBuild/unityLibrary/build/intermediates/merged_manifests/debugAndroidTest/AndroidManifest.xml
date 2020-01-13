@@ -14,9 +14,8 @@
         android:targetPackage="com.unity3d.player.test" />
 
     <uses-feature android:glEsVersion="0x00030000" />
-    <uses-feature
-        android:name="android.hardware.vulkan"
-        android:required="false" />
+
+    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -65,7 +64,7 @@
             android:value="portrait|landscape" />
         <meta-data
             android:name="unity.build-id"
-            android:value="c9088661-dee1-4ee2-bb72-3bcb073e103a" />
+            android:value="76777942-c7c2-4ad0-ac29-7c1fa7bd9311" />
     </application>
 
 </manifest>

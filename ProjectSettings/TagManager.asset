@@ -10,6 +10,9 @@ TagManager:
   - ParallaxLayer
   - PlayerProjectile
   - ObstacleProjectile
+  - Enemy
+  - EndPortal
+  - StartPack
   layers:
   - Default
   - TransparentFX

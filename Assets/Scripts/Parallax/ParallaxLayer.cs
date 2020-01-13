@@ -24,7 +24,7 @@ public class ParallaxLayer : MonoBehaviour {
         if (lockOn) {
             transform.position=new Vector3(stickyFactor*(lockOn.position.x)-10f, 0, 0);
             if (!lastLI || lockOn.position.x + 2f*rightCameraOffset > lastLI.transform.position.x+lastLI.Width) { //HEHEHRHE
-                lastLI = layerImages[Random.Range(0, layerImages.Length)].Get(transform);
+                lastLI = layerImages[Random.Range(0, layerImages.Length)].GetOrSpawnIn(transform);
                 if (lastLI) {
                     lastLI.transform.localPosition = new Vector3(nextSpawnDistance, 0f,0f);
                     nextSpawnDistance += lastLI.Width;

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class F1SLink : MonoBehaviour {
     public static F1SLink sng { get; private set; }
-    
     private Player p;
+
     
+    [DllImport ("__Internal")]
+    public static extern void showMainScreen (string service, string domain);
+
+
     private void Awake() {
         if (sng == null) sng = this;
         else {
@@ -33,16 +38,12 @@ public class F1SLink : MonoBehaviour {
             Debug.Log(e.Message);
         }
 #elif UNITY_IOS
-        NativeAPI.showHostMainWindow(lastStringColor);
+        NativeAPI.showHostMainWindow();
 #endif
     }
     
     public void UpdateDepthFromSensor(String s) {
         if(p) p.UpdateDepth(Int32.Parse(s));
-    }
-
-    public void AttackSignal(String s) {
-        if(p) p.Attack();
     }
 
     private void Initialize() {

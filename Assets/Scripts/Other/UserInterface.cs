@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText;
-    public GameObject ripSplash;
+    public GameObject deathScreen;
     public GameObject damageSplash;
     public Slider sensorSlider;
     public Image[] sensors;
@@ -19,10 +20,6 @@ public class UserInterface : MonoBehaviour {
             Destroy(sng);
             sng = this;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start() {
         Initialize();
     }
 
@@ -34,6 +31,16 @@ public class UserInterface : MonoBehaviour {
 
     public void SliderDepthSensorUpdate() {
         Player.sng.UpdateDepth((int) sensorSlider.value);
+    }
+
+    public void ButtonRestartClicked() {
+        Destroy(GameController.sng.Consingletone);
+        SceneManager.LoadScene(1);
+    }
+
+    public void ButtonMainMenuClicked() {
+        Destroy(GameController.sng.Consingletone);
+        SceneManager.LoadScene(0);
     }
 
     public void EnableDepthSensor(int i, bool b) {

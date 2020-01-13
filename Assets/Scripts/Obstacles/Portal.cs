@@ -4,37 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Portal : Obstacle {
+    [Header("Portal")]
     public Transform destination;
-    public float traveltime;
-    
-    private Quaternion qrotation;
-    
-    void Start() {
-        Initialize();
-    }
+    const float TRAVEL_TIME=0.5f;
 
-    private void Initialize() {
-        qrotation = transform.rotation;
-    }
-
-    public void Spawn(int obstPackId, Vector3 position, Vector3 destinationPosition) {
-        base.Spawn(obstPackId, position, qrotation);
+    public void SetStatesOnSpawn(Transform transformInfo, Portal bluePrint) {
+        Vector3 destinationPosition = bluePrint.destination.localPosition;
         destinationPosition.Scale(transform.localScale);
-        destination.position = position + destinationPosition; //destinationPosition je localPosition
+        destination.position = transformInfo.position + destinationPosition; //destinationPosition je localPosition
     }
 
-    private IEnumerator PortalTravel(GameObject o) {
-        o.SetActive(false);
-        yield return new WaitForSeconds(traveltime);
-        o.transform.position = destination.position;
-        o.SetActive(true);
+    private IEnumerator PortalTravel(Player p) {
+        p.InPortal(true);
+        yield return new WaitForSeconds(TRAVEL_TIME);
+        p.transform.position = destination.position;
+        p.InPortal(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (!other.gameObject.CompareTag("PlayerProjectile"))
-            StartCoroutine(PortalTravel(other.gameObject));
+        if (other.gameObject.CompareTag("Player"))
+            StartCoroutine(PortalTravel(Player.sng));
         else {
-            other.gameObject.GetComponent<UnitProjectile>().ActiveObstacle = false;
+            other.gameObject.GetComponent<Projectile>().ActiveObstacle = false;
         }
     }
 }

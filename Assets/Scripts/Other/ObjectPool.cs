@@ -9,7 +9,7 @@ namespace MyObjectPooling {
     
         private List<T> pooledObjects=new List<T>();
 
-        public T Get(Transform spawnOn) {
+        public T GetOrSpawnIn(Transform spawnIn) {
             foreach (T obj in pooledObjects)
                 if (obj is Obstacle && !(obj as Obstacle).ActiveObstacle || 
                     obj is ObstaclePack && !(obj as ObstaclePack).ActiveObstaclePack ||
@@ -18,7 +18,7 @@ namespace MyObjectPooling {
                     return obj;
 
             if (pooledObjects.Count < maxObjects) {
-                T x = Object.Instantiate<T>(objectPrefab, spawnOn);
+                T x = Object.Instantiate<T>(objectPrefab, spawnIn);
                 pooledObjects.Add(x);
                 return x;
             }

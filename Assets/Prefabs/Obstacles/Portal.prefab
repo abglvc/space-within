@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ed87f1a32b9bf7e4da51eccc185fd759, type: 3}
-  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0.5803922}
+  m_Color: {r: 0.5553854, g: 0.40690637, b: 0.6792453, a: 0.5803922}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,10 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0934488e99bc9fb4c90297a5ecdefd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleIndex: 6
-  destructable: 0
+  OBSTACLE_INDEX: 6
   destination: {fileID: 3967144553097075990}
-  traveltime: 0.5
 --- !u!212 &4347441222708795120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -171,7 +169,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ed87f1a32b9bf7e4da51eccc185fd759, type: 3}
-  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0.59607846}
+  m_Color: {r: 0.93011785, g: 0.6462264, b: 1, a: 0.59607846}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -12,28 +12,30 @@
             <e p="F1SLink.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
           </e>
-          <e p="Enemies" t="Include">
-            <e p="Enemy.cs" t="Include" />
-          </e>
           <e p="Obstacles" t="Include">
             <e p="DestructableObstacle.cs" t="Include" />
+            <e p="Enemy.cs" t="Include" />
             <e p="Obstacle.cs" t="Include" />
             <e p="ObstaclePack.cs" t="Include" />
             <e p="Obstahurt.cs" t="Include" />
             <e p="Portal.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="RotaSpikes.cs" t="Include" />
-            <e p="UnitProjectile.cs" t="Include" />
           </e>
           <e p="Other" t="Include">
+            <e p="Consingletone.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
-            <e p="Pickup.cs" t="Include" />
             <e p="UserInterface.cs" t="Include" />
           </e>
           <e p="Parallax" t="Include">
             <e p="LayerImage.cs" t="Include" />
             <e p="ParallaxLayer.cs" t="Include" />
+          </e>
+          <e p="Pickups" t="Include">
+            <e p="HealthPickup.cs" t="Include" />
+            <e p="Pickup.cs" t="Include" />
+            <e p="PowerPickup.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="Player.cs" t="Include" />

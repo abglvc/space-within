@@ -89,12 +89,10 @@ uses-feature#0x00030000
 ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:3-52
 	android:glEsVersion
 		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:18:17-49
-uses-feature#android.hardware.vulkan
-ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:3-83
-	android:required
-		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:56-80
+supports-gl-texture#GL_OES_compressed_ETC1_RGB8_texture
+ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:3-77
 	android:name
-		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:17-55
+		ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:19:24-74
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\PC\Desktop\Android\f1sgame\androidBuild\unityLibrary\src\main\AndroidManifest.xml:20:3-65
 	android:name

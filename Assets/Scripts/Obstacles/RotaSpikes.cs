@@ -2,14 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotaSpikes : DestructableObstacle {
+public class RotaSpikes : Obstahurt {
+    [Header("RotaSpikes")]
     public int rotationSpeed;
 
-    private new void Awake() {
+    private Transform rotatingPart;
+
+    protected new void Awake() {
         Initialize();
+        base.Awake();
+    }
+    
+    public void SetStatesOnSpawn(RotaSpikes bluePrint, float difficulty) {
+        rotationSpeed = bluePrint.rotationSpeed;
+        base.SetStatesOnSpawn(bluePrint, difficulty);
+    }
+
+    private new void Initialize() {
+        rotatingPart = transform.GetChild(1);
     }
 
     void Update() {
-        transform.Rotate (0,0,rotationSpeed*Time.deltaTime);
+        rotatingPart.Rotate (0,0,rotationSpeed*Time.deltaTime);
     }
+    
+    
 }

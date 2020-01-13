@@ -4,31 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : Obstahurt {
+    [Header("Projectile")]
     public float speed;
-    
-    private Rigidbody2D rb;
-    private TrailRenderer tr;
-    private Quaternion qrotation;
+    public Vector3 moveDirection;
+    public float timeAlive;
 
-    private new void Awake() {
-        base.Initialize();
+    protected Rigidbody2D rb;
+    private TrailRenderer tr;
+
+    protected new void Awake() {
         Initialize();
+        base.Awake();
     }
 
-    private void OnEnable() { // maybe
-        base.Initialize();
+    private IEnumerator Destruct() {
+        yield return new WaitForSeconds(timeAlive);
+        ActiveObstacle = false;
     }
 
     private new void Initialize() {
+        base.Initialize();
         rb = GetComponent<Rigidbody2D>();
-        tr = GetComponent<TrailRenderer>();
-        qrotation = transform.rotation;
+        tr = GetComponentInChildren<TrailRenderer>();
     }
 
-    public void Spawn(int callerId, Vector3 position, Vector2 moveDirection) {
-        if(tr) tr.emitting = false;
-        base.Spawn(callerId, position, qrotation);
-        rb.velocity = moveDirection * speed;
-        if(tr) tr.emitting = true;
+    public void SetStatesOnSpawn(Projectile bluePrint, float initialSpeed, float difficulty) {
+        moveDirection = bluePrint.moveDirection;
+        speed = bluePrint.speed * (1f + difficulty);
+        rb.velocity = moveDirection * (initialSpeed + speed);
+        timeAlive = bluePrint.timeAlive;
+        if(tr) tr.Clear();
+        StartCoroutine(Destruct());
+        base.SetStatesOnSpawn(bluePrint, difficulty);
     }
 }

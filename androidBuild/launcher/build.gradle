@@ -18,7 +18,7 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
-        applicationId 'com.lelo.f1sgame'
+        applicationId 'com.lelo.f1space'
         ndk {
             abiFilters 'armeabi-v7a'
         }

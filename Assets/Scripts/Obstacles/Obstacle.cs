@@ -6,16 +6,18 @@ using UnityEditor;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
-    public int obstacleIndex;
+    [Header("Obstacle")]
+    public int OBSTACLE_INDEX;
     protected bool activeObstacle;
     protected int callerId;
-    
-    public void Spawn(int callerId, Vector3 position, Quaternion rotation) {
+
+    public void Spawn(int callerId, Transform transformInfo) {
         this.callerId = callerId;
-        transform.position = position;
-        transform.rotation = rotation;
+        transform.position = transformInfo.position;
+        transform.rotation = transformInfo.rotation;
         ActiveObstacle = true;
     }
+    
 
     public bool ActiveObstacle {
         get => activeObstacle;

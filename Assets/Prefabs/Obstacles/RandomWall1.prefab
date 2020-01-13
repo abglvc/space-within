@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 743ce1be5c3c9f34d8ff85cc4c90d83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleIndex: 1
+  OBSTACLE_INDEX: 1
 --- !u!212 &1561504067079762134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9e0c13a4ae5c254c9943cc802b113f3, type: 3}
-  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0.65882355}
+  m_Color: {r: 0.8113208, g: 0.24110004, b: 0.45530996, a: 0.47058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

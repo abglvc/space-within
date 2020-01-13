@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/main_menu.unity
     guid: a0b478ffc17e0f14da4b67a175dd3472
   - enabled: 1
-    path: Assets/Scenes/main.unity
+    path: Assets/Scenes/red_planet.unity
     guid: ed3b6831f4075a94ba880a1a23069bc6
+  - enabled: 1
+    path: Assets/Scenes/purple_planet.unity
+    guid: 367948633f9e97940863010bc10e9fb1
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6fb0997e686131541840a9aa18276e18,
       type: 2}
