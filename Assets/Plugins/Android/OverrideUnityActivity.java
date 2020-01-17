@@ -9,7 +9,7 @@ public abstract class OverrideUnityActivity extends UnityPlayerActivity
     protected int previousDepth=0;
 
     abstract protected void showMainActivity();
-    abstract public void UpdateDepthFromSensor(Integer x);
+    abstract public void updateDepthFromSensor(Integer x);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

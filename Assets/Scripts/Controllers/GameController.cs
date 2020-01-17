@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
     }
 
     private void Initialize() {
-        if (Player.sng == null) {
+        if (Consingletone.sng == null) {
             consingletone = Instantiate(consingletonePrefab, Vector3.zero, new Quaternion());
             DontDestroyOnLoad(consingletone);
         }
@@ -71,6 +71,4 @@ public class GameController : MonoBehaviour {
     public void LoadNextPlanet() {
         SceneManager.LoadScene(nextPlanet);
     }
-    
-    public GameObject Consingletone => consingletone;
 }

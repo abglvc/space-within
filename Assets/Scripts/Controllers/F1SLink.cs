@@ -25,21 +25,8 @@ public class F1SLink : MonoBehaviour {
         Initialize();
     }
 
-    public void ShowMainActivity() {
-#if UNITY_ANDROID
-        try
-        {
-            AndroidJavaClass jc = new AndroidJavaClass("com.lelo.f1s.OverrideUnityActivity");
-            AndroidJavaObject overrideActivity = jc.GetStatic<AndroidJavaObject>("instance");
-            overrideActivity.Call("showMainActivity");
-        } catch(Exception e)
-        {
-            Debug.Log("Exception during showHostMainWindow");
-            Debug.Log(e.Message);
-        }
-#elif UNITY_IOS
-        NativeAPI.showHostMainWindow();
-#endif
+    public void QuitGameSession() {
+        Application.Unload();
     }
     
     public void UpdateDepthFromSensor(String s) {

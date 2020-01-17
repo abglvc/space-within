@@ -10,6 +10,6 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OnQuitButtonPressed() {
-        F1SLink.sng.ShowMainActivity();
+        F1SLink.sng.QuitGameSession();
     }
 }

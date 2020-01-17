@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText;
-    public GameObject deathScreen;
+    public GameObject deathScreen, pauseScreen;
     public GameObject damageSplash;
     public Slider sensorSlider;
     public Image[] sensors;
@@ -25,22 +25,35 @@ public class UserInterface : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Unload();
-            //F1SLink.sng.ShowMainActivity(); //Application.Unload();    BILO JE Quit() do prije komentara
+        if (Input.GetKeyDown(KeyCode.Escape)) F1SLink.sng.QuitGameSession();
     }
 
     public void SliderDepthSensorUpdate() {
         Player.sng.UpdateDepth((int) sensorSlider.value);
     }
 
-    public void ButtonRestartClicked() {
-        Destroy(GameController.sng.Consingletone);
-        SceneManager.LoadScene(1);
+    public void ButtonPauseClicked() {
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
+    public void ButtonResumeClicked() {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void ButtonRestartClicked() {
+        Destroy(Consingletone.sng.gameObject);
+        SceneManager.LoadScene(1);
+    }
+    
     public void ButtonMainMenuClicked() {
-        Destroy(GameController.sng.Consingletone);
+        Destroy(Consingletone.sng.gameObject);
         SceneManager.LoadScene(0);
+    }
+
+    public void ButtonQuitClicked() {
+        F1SLink.sng.QuitGameSession();
     }
 
     public void EnableDepthSensor(int i, bool b) {
@@ -49,6 +62,7 @@ public class UserInterface : MonoBehaviour {
 
     private void Initialize() {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Time.timeScale = 1f;
         InitialiseSensorVisuals();
     }
 

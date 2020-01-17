@@ -73,10 +73,10 @@ public class DestructableObstacle : Obstacle {
     public int Health {
         get => health;
         set {
-            if (value <= 0) Destruct();
-            else if (UICanvas) UpdateHealthUi(true);
-            if (value <= health && value > 0 && sr) StartCoroutine(Blink(0.1f, Color.red));
+            if (value <= health && value > 0 && sr) StartCoroutine(Blink(0.1f, Color.gray));
             health = value;
+            if (health <= 0) Destruct();
+            else if (UICanvas) UpdateHealthUi(true);
         }
     }
 

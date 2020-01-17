@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
                 rb.gravityScale *= -1;
         
             if (Time.time > nextVelocityCheck) {
-                if (previousDepth > 0 && (rb.velocity.x < 0 || rb.velocity.magnitude < horizontalSpeed / 2)) {
+                if (rb.velocity.x < 0 || rb.velocity.magnitude < horizontalSpeed / 2) {
                     rb.velocity = Vector2.right * horizontalSpeed;
                 }
                 nextVelocityCheck += 0.5f;
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
                     oh.UsedPower();
                 }
             }
-            if(previousDepth > 0) rb.velocity = Vector2.right * horizontalSpeed;
+            rb.velocity = Vector2.right * horizontalSpeed;
         }
     }
     
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour {
 
         health = maxHealth;
         rb.gravityScale = verticalSpeed;
-        if(previousDepth > 0) rb.velocity = Vector2.right * horizontalSpeed;
+        rb.velocity = Vector2.right * horizontalSpeed;
         healthSlider.maxValue = Health;
         UpdateHealthUi();
         playerId = GetInstanceID();
@@ -185,7 +185,6 @@ public class Player : MonoBehaviour {
                 ui.EnableDepthSensor(i, true);
             else ui.EnableDepthSensor(i, false);
         previousDepth = depth;
-        if (depth == 0) rb.velocity = Vector2.zero;
     }
 
     public void OnGravityDirectionChange(int k) {
