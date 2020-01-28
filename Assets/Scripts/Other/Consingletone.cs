@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MyObjectPooling;
 using UnityEngine;
-using MyObjectPooling;
 
 public class Consingletone : MonoBehaviour {
     public static Consingletone sng { get; private set; } //singletone

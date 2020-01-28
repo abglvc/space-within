@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/main_menu.unity
     guid: a0b478ffc17e0f14da4b67a175dd3472
   - enabled: 1
+    path: Assets/Scenes/orange_planet.unity
+    guid: 45307c6947ef67940a3f0b926866a9d5
+  - enabled: 1
     path: Assets/Scenes/red_planet.unity
     guid: ed3b6831f4075a94ba880a1a23069bc6
   - enabled: 1

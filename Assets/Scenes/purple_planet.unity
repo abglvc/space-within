@@ -304,7 +304,7 @@ MonoBehaviour:
   consingletonePrefab: {fileID: 850881380824924321, guid: 450f3466005ce214fa5be8ded0790585,
     type: 3}
   obstacleHeap: {fileID: 2070600090}
-  startObstaclePack: {fileID: 8829611016875609351, guid: 067391e44e4283b48a4c3a655652e6f4,
+  startObstaclePack: {fileID: 1322951083070714238, guid: b91cb7df9c7549e47bfcb617eeefdc1a,
     type: 3}
   endObstaclePack: {fileID: 724844172932456654, guid: 8890e3ad4d5eb514f89ae2c439acd994,
     type: 3}
@@ -322,6 +322,12 @@ MonoBehaviour:
       type: 3}
     maxObjects: 2
   - objectPrefab: {fileID: 4954490427866224220, guid: 14a4be6f7318c524db9764c9638c8341,
+      type: 3}
+    maxObjects: 1
+  - objectPrefab: {fileID: 8952671183395102655, guid: 9be2214da25712749a698bf832117f30,
+      type: 3}
+    maxObjects: 1
+  - objectPrefab: {fileID: 5147105693607845496, guid: dd7cdcfe2d14a3b469da4b27b861e28b,
       type: 3}
     maxObjects: 1
   distanceUntilNextPlanet: 500

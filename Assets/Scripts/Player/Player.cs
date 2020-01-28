@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using MyObjectPooling;
 using UnityEngine;
 using UnityEngine.UI;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 
 public class Player : MonoBehaviour {
     public static Player sng { get; private set; } //singletone
@@ -17,17 +13,18 @@ public class Player : MonoBehaviour {
     public GameObject postDestructPrefab;
     public float postDestructTime;
     public ObstaclePool[] projectiles;
+    public Transform[] shootSources;
     
     [Header("UI Health")]
     public Text healthText;
     public Slider healthSlider;
-
+    public Color colorHurt, colorHeal;
+    
     private int health;
-    private int score = 0;
+    private int score = 0, bonusScore = 0;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Collider2D col;
-    private GameObject uiStats;
     private bool isRecovering = false;
     private int previousDepth = 0;
     private int projectileIndex = -1;
@@ -102,7 +99,6 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-        uiStats = GetComponentInChildren<RectTransform>().gameObject;
 
         health = maxHealth;
         rb.gravityScale = verticalSpeed;
@@ -116,13 +112,6 @@ public class Player : MonoBehaviour {
         return transform.position.x;
     }
 
-/*
-    private bool TopOriented() {
-        RaycastHit2D rhUp = Physics2D.Raycast(transform.position, Vector2.up, 100f, raycastLayerMask);
-        RaycastHit2D rhDown = Physics2D.Raycast(transform.position, Vector2.down, 100f, raycastLayerMask);
-        return rhUp.distance < rhDown.distance;
-    }
-*/
     private Coroutine activeAutomaticShoot;
     
     private IEnumerator AutomaticShoot(int index) {
@@ -133,11 +122,13 @@ public class Player : MonoBehaviour {
         if(projectileIndex == -1) yield break;
         WaitForSeconds rechargeTime = new WaitForSeconds(attackRecharge);
         while (true) {
-            Projectile p = projectiles[index].GetOrSpawnIn(transform.parent) as Projectile;
-            if (p) {
-                p.Spawn(playerId, transform);
-                p.SetStatesOnSpawn(p, horizontalSpeed, 0f);
-                p.ActiveObstacle = true;
+            for (int i = 0; i < shootSources.Length; i++) {
+                Projectile p = projectiles[index].GetOrSpawnIn(transform.parent) as Projectile;
+                if (p) {
+                    p.Spawn(playerId, shootSources[i]);
+                    p.SetStatesOnSpawn(p, horizontalSpeed, 0f);
+                    p.ActiveObstacle = true;
+                }
             }
             yield return rechargeTime;
         }
@@ -147,10 +138,9 @@ public class Player : MonoBehaviour {
         if (value) {
             if (activeAutomaticShoot != null) {
                 StopCoroutine(activeAutomaticShoot);
-            }   
+            }
         } else activeAutomaticShoot = StartCoroutine(AutomaticShoot(projectileIndex));
         
-        uiStats.SetActive(!value);
         rb.simulated = !value;
         col.enabled = !value;
         sr.enabled = !value;
@@ -195,17 +185,24 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private IEnumerator DamageRecovery(float tickTime) {
-        isRecovering = true;
+    private Coroutine activeFrameSplash;
+
+    private IEnumerator FrameSplash(float tickTime, Color color, bool recover) {
+        if (activeFrameSplash != null) {
+            StopCoroutine(activeFrameSplash);
+        }
+        isRecovering = recover;
         WaitForSeconds tick = new WaitForSeconds(tickTime);
         float tRecovery = recoveryTime;
+        UserInterface.sng.frameSplash.color = color;
+        GameObject frameSplashObj = UserInterface.sng.frameSplash.gameObject;
         while (tRecovery > 0) {
-            UserInterface.sng.damageSplash.SetActive(!UserInterface.sng.damageSplash.activeSelf);
+            frameSplashObj.SetActive(!frameSplashObj.activeSelf);
             tRecovery -= tickTime;
             yield return tick;
         }
-        isRecovering = false;
-        UserInterface.sng.damageSplash.SetActive(false);
+        if(recover) isRecovering = false;
+        frameSplashObj.SetActive(false);
     }
     
     private IEnumerator Blink(float duration, Color color) {
@@ -213,7 +210,7 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         sr.color = Color.white;
     }
-    
+
     private Coroutine activePowerPickup;
     
     public IEnumerator ActivatePowerPickup(int index, float effectTime) {
@@ -235,17 +232,26 @@ public class Player : MonoBehaviour {
                         health = value <= 0 ? 0 : value;
                         if (health == 0) Death();
                         else {
-                            StartCoroutine(DamageRecovery(0.2f));
-                            StartCoroutine(Blink(0.1f, Color.red));
+                            activeFrameSplash = StartCoroutine(FrameSplash(0.2f, colorHurt, true));
+                            StartCoroutine(Blink(0.1f, colorHurt));
                         }
                     }
                 }
                 else {
                     health = value > maxHealth ? maxHealth : value;
-                    StartCoroutine(Blink(0.15f, Color.green));
+                    activeFrameSplash = StartCoroutine(FrameSplash(0.2f, colorHeal, false));
                 }
                 UpdateHealthUi();
             }
+        }
+    }
+
+    public int BonusScore {
+        get => bonusScore;
+        set {
+            Score += value - bonusScore;
+            bonusScore = value;
+            UserInterface.sng.UpdateBonusScore(bonusScore);
         }
     }
 

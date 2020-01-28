@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +24,7 @@ public class DestructableObstacle : Obstacle {
         if (g.CompareTag("PlayerProjectile")) {
             Projectile up = g.GetComponent<Projectile>();
             if(health-up.powerDamage <= 0) //add to score
-                Player.sng.Score += maxHealth*25;
+                Player.sng.BonusScore += maxHealth * 25;
             Health -= up.powerDamage;
             up.UsedPower();
         }else if (g.CompareTag("Obstacle") || g.CompareTag("Obstahurt") || g.CompareTag("Enemy") || g.CompareTag("ObstacleProjectile")) {

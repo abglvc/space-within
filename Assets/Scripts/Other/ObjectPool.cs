@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace MyObjectPooling {
-    [System.Serializable]
+    [Serializable]
     public class ObjectPool<T> where T: Object{
         public T objectPrefab;
         public int maxObjects=2;
@@ -36,13 +38,13 @@ namespace MyObjectPooling {
         }
     }
     //Da se moze pristupiti u editoru.
-    [System.Serializable]
+    [Serializable]
     public class ObstaclePool : ObjectPool<Obstacle> {}
-    [System.Serializable]
+    [Serializable]
     public class ObstaclePackPool : ObjectPool<ObstaclePack> {}
-    [System.Serializable]
+    [Serializable]
     public class LayerImagePool : ObjectPool<LayerImage> {}
-    [System.Serializable]
+    [Serializable]
     public class GameObjectPool : ObjectPool<GameObject> {}
     
 }

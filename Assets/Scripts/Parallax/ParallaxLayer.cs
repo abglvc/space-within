@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using MyObjectPooling;
+﻿using MyObjectPooling;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ParallaxLayer : MonoBehaviour {
     public float stickyFactor;    //0-1

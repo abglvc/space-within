@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1786585294290182179}
   - component: {fileID: 1786585294290182181}
   m_Layer: 0
-  m_Name: pickup3
+  m_Name: Pickup3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,8 +87,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed87f1a32b9bf7e4da51eccc185fd759, type: 3}
-  m_Color: {r: 0.4765931, g: 0.9622642, b: 0.48963127, a: 1}
+  m_Sprite: {fileID: -8396681882483885910, guid: 7e8a53fe8bc708d48b99be12fccde071,
+    type: 3}
+  m_Color: {r: 0, g: 1, b: 0.32071114, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

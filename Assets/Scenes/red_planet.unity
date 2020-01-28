@@ -324,8 +324,14 @@ MonoBehaviour:
   - objectPrefab: {fileID: 4954490427866224220, guid: 14a4be6f7318c524db9764c9638c8341,
       type: 3}
     maxObjects: 2
+  - objectPrefab: {fileID: 8952671183395102655, guid: 9be2214da25712749a698bf832117f30,
+      type: 3}
+    maxObjects: 2
+  - objectPrefab: {fileID: 5147105693607845496, guid: dd7cdcfe2d14a3b469da4b27b861e28b,
+      type: 3}
+    maxObjects: 2
   distanceUntilNextPlanet: 500
-  nextPlanet: 2
+  nextPlanet: 3
 --- !u!1 &1689273810
 GameObject:
   m_ObjectHideFlags: 0

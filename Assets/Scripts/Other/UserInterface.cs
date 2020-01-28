@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
-    public Text scoreText;
+    public Text scoreText, bonusText;
     public GameObject deathScreen, pauseScreen;
-    public GameObject damageSplash;
+    public Image frameSplash;
+    public RectTransform cautionGraphics;
     public Slider sensorSlider;
     public Image[] sensors;
     public Color sensorOnColor;
@@ -75,5 +74,16 @@ public class UserInterface : MonoBehaviour {
 
     public void UpdateScore(int score) {
         scoreText.text = score.ToString();
+    }
+
+    public void UpdateBonusScore(int bonusScore) {
+        bonusText.text = bonusScore.ToString();
+    }
+
+    public void SignalDanger(float yWorldPosition) {
+        RectTransform s = Instantiate(cautionGraphics, transform);
+        s.anchoredPosition = new Vector2(0f, yWorldPosition/5f * 360);
+        //s.rect.Set(0, yWorldPosition/5f * 360, 100, 100 );
+        Destroy(s.gameObject,2f);
     }
 }

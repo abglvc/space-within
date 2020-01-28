@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LayerImage : MonoBehaviour {
     public float ppu = 16.0f; //pixels per unit

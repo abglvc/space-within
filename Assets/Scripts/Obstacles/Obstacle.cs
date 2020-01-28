@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
     [Header("Obstacle")]

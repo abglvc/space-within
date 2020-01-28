@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using MyObjectPooling;
 using UnityEngine;
-using Random = UnityEngine.Random;
-using MyObjectPooling;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
@@ -45,7 +41,9 @@ public class GameController : MonoBehaviour {
         
         player.previousDistance = 0;
         player.transform.position=new Vector3(3f,0,0);
-        player.GetComponentInChildren<TrailRenderer>().Clear();
+        TrailRenderer[] trailRenderers = player.GetComponentsInChildren<TrailRenderer>();
+        for (int i =0; i<trailRenderers.Length; i++)
+            trailRenderers[i].GetComponentInChildren<TrailRenderer>().Clear();
         Camera.main.transform.position=new Vector3(10,0,-10);
     }
     

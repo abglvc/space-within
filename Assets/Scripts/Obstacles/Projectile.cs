@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Projectile : Obstahurt {
@@ -29,6 +27,7 @@ public class Projectile : Obstahurt {
     }
 
     public void SetStatesOnSpawn(Projectile bluePrint, float initialSpeed, float difficulty) {
+        if (bluePrint.moveDirection.x < 0) UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
         moveDirection = bluePrint.moveDirection;
         speed = bluePrint.speed * (1f + difficulty);
         rb.velocity = moveDirection * (initialSpeed + speed);
