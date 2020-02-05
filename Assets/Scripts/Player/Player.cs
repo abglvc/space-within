@@ -99,7 +99,6 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-
         health = maxHealth;
         rb.gravityScale = verticalSpeed;
         rb.velocity = Vector2.right * horizontalSpeed;

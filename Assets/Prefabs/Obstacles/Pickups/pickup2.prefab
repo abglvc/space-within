@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 559866655352377133}
   - component: {fileID: 559866655352377131}
   m_Layer: 0
-  m_Name: pickup1
+  m_Name: Pickup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OBSTACLE_INDEX: 11
-  projectile: 1
+  projectile: 2
   effectTime: 5
 --- !u!212 &559866655352377132
 SpriteRenderer:

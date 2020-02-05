@@ -45,13 +45,16 @@ public class GameController : MonoBehaviour {
         for (int i =0; i<trailRenderers.Length; i++)
             trailRenderers[i].GetComponentInChildren<TrailRenderer>().Clear();
         Camera.main.transform.position=new Vector3(10,0,-10);
+        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = -6;
     }
-    
+
+    private bool flipWalls = true;
+    private bool previousEvenNumberPlatform = false;
     private void SpawnObstaclePack() {
         if (nextObstacleX < 0.5f) {
             GameObject obstaclePack = Instantiate(startObstaclePack, obstacleHeap);
-            obstaclePack.transform.position = new Vector3(nextObstacleX + 25f / 2, 0, 0);
-            nextObstacleX += 25f;
+            obstaclePack.transform.position = new Vector3(nextObstacleX + 20f / 2, 0, 0);
+            nextObstacleX += 20f;
         } else if (!endReached && distanceTraveled > distanceUntilNextPlanet) {
             GameObject obstaclePack = Instantiate(endObstaclePack, obstacleHeap);
             obstaclePack.transform.position = new Vector3(nextObstacleX +  25f / 2, 0, 0);
@@ -59,14 +62,16 @@ public class GameController : MonoBehaviour {
         } else if (!endReached){
             ObstaclePack obstaclePack = obstaclePacksPool[Random.Range(0,obstaclePacksPool.Length)].GetOrSpawnIn(obstacleHeap);
             if (obstaclePack) {
-                obstaclePack.Spawn(nextObstacleX, distanceTraveled/distanceUntilNextPlanet);
+                obstaclePack.Spawn(nextObstacleX, distanceTraveled/distanceUntilNextPlanet, flipWalls);
+                previousEvenNumberPlatform = obstaclePack.evenNumberPlatforms;
+                flipWalls = !flipWalls && !previousEvenNumberPlatform || flipWalls && previousEvenNumberPlatform;
                 nextObstacleX += obstaclePack.width;
             }
         }
     }
-    
-    
+
     public void LoadNextPlanet() {
+        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         SceneManager.LoadScene(nextPlanet);
     }
 }

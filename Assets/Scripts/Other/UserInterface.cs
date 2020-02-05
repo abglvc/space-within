@@ -42,11 +42,13 @@ public class UserInterface : MonoBehaviour {
     }
 
     public void ButtonRestartClicked() {
+        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
         SceneManager.LoadScene(1);
     }
     
     public void ButtonMainMenuClicked() {
+        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
         SceneManager.LoadScene(0);
     }

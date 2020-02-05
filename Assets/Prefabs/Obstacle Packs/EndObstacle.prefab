@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724844172932456651}
   m_Layer: 0
-  m_Name: RedEndObstaclePack
+  m_Name: EndObstacle
   m_TagString: StartPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,11 +284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724844172932456651}
     m_Modifications:
-    - target: {fileID: 8869812197112746587, guid: 06426fbf4f552064cae06b12bc7494e6,
-        type: 3}
-      propertyPath: m_Name
-      value: EndPortal
-      objectReference: {fileID: 0}
     - target: {fileID: 8869812197112746590, guid: 06426fbf4f552064cae06b12bc7494e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,6 +338,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869812197112746590, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869812197112746590, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869812197112746587, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_Name
+      value: EndPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869812197112746589, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e001a666a0d0e624e96b54a91b1cdd71,
+        type: 3}
+    - target: {fileID: 8869812197112746588, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869812197112746588, guid: 06426fbf4f552064cae06b12bc7494e6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06426fbf4f552064cae06b12bc7494e6, type: 3}

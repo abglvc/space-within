@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstaclePack : MonoBehaviour {
     public float width;
     public float height;
+    public bool evenNumberPlatforms;
     [Serializable]
     public struct ObstacleInfo { //transform and obstacle in game controller
         public Transform transf;
@@ -25,10 +26,19 @@ public class ObstaclePack : MonoBehaviour {
     }
 
     private void AttachObstacles() {
+        bool flipTop = flipWalls;
+        bool flipBot = flipWalls;
         for (int i=0; i<obstacleInfo.Count; i++) {
             Obstacle o = csg.GetObstacleFromPool(obstacleInfo[i].bluePrint.OBSTACLE_INDEX);
             if (o != null) {
                 o.Spawn(obstaclePackId, obstacleInfo[i].transf);
+                
+                if (o.OBSTACLE_INDEX == 0) { o.GetComponent<SpriteRenderer>().flipX = flipTop;
+                    flipTop = !flipTop;
+                } else if (o.OBSTACLE_INDEX == 15) { o.GetComponent<SpriteRenderer>().flipX = flipBot;
+                    flipBot = !flipBot;
+                }
+
                 //Debug.Log(difficulty);
                 switch (o) {
                     case Projectile projectile:
@@ -56,10 +66,12 @@ public class ObstaclePack : MonoBehaviour {
         foreach (var o in attachedObstacles)
             if (o != null && obstaclePackId==o.CallerId && o.ActiveObstacle) o.ActiveObstacle = false;
     }
-
-    public void Spawn(float nextObstacleX, float difficulty) {
+    //flip top/bot walls
+    private bool flipWalls;
+    public void Spawn(float nextObstacleX, float difficulty, bool flipWalls) {
         transform.position = new Vector3(nextObstacleX + width / 2, 0, 0);
         this.difficulty = difficulty;
+        this.flipWalls = flipWalls;
         ActiveObstaclePack = true;
     }
 
