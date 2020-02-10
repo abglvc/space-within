@@ -7,12 +7,20 @@ public class Projectile : Obstahurt {
     public Vector3 moveDirection;
     public float timeAlive;
 
+    public int rotationSpeed;
+    public Transform rotatingPart;
+    
     protected Rigidbody2D rb;
     private TrailRenderer tr;
 
     protected new void Awake() {
         Initialize();
         base.Awake();
+    }
+    
+    void Update() {
+        if(rotationSpeed != 0)
+            rotatingPart.Rotate (0,0,rotationSpeed*Time.deltaTime);
     }
 
     private IEnumerator Destruct() {
@@ -24,11 +32,14 @@ public class Projectile : Obstahurt {
         base.Initialize();
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponentInChildren<TrailRenderer>();
+        if (rotatingPart == null) rotatingPart = transform;
     }
-
-    public void SetStatesOnSpawn(Projectile bluePrint, float initialSpeed, float difficulty) {
-        if (bluePrint.moveDirection.x < 0) UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
-        moveDirection = bluePrint.moveDirection;
+    
+    public void SetStatesOnSpawn(Projectile bluePrint, Vector3 dir, float initialSpeed, float difficulty, bool dangerSignal=false) {
+        if (dangerSignal) {
+            UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
+        }
+        moveDirection = dir;
         speed = bluePrint.speed * (1f + difficulty);
         rb.velocity = moveDirection * (initialSpeed + speed);
         timeAlive = bluePrint.timeAlive;

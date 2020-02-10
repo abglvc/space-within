@@ -2,12 +2,12 @@
 using MyObjectPooling;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class Player : MonoBehaviour {
     public static Player sng { get; private set; } //singletone
     public int maxHealth;
     public float verticalSpeed;
     public float horizontalSpeed;
+    public int maxRotationDeg;
     public float recoveryTime;
     public float attackRecharge = 2f;
     public GameObject postDestructPrefab;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
     private int previousDepth = 0;
     private int projectileIndex = -1;
     private int playerId;
+    private Projectile[] projectileBluePrints = new Projectile[3];
     
     private void Awake() {
         if (sng == null) sng = this;
@@ -64,6 +65,10 @@ public class Player : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if (activeTilt != null && other.gameObject.CompareTag("Obstacle") && (int)Mathf.Sign(other.GetContact(0).point.y-transform.position.y) != (int)Mathf.Sign(rb.gravityScale)) {
+            StopCoroutine(activeTilt);
+            transform.rotation = new Quaternion();
+        }
         if (health > 0) {
             GameObject g = other.gameObject;
             if (g.CompareTag("Obstahurt") || g.CompareTag("ObstacleProjectile") || g.CompareTag("Enemy")) {
@@ -105,6 +110,9 @@ public class Player : MonoBehaviour {
         healthSlider.maxValue = Health;
         UpdateHealthUi();
         playerId = GetInstanceID();
+
+        for (int i = 0; i < projectileBluePrints.Length; i++)
+            projectileBluePrints[i] = projectiles[i].objectPrefab as Projectile;
     }
 
     public float DistanceTraveled() {
@@ -120,12 +128,14 @@ public class Player : MonoBehaviour {
         }
         if(projectileIndex == -1) yield break;
         WaitForSeconds rechargeTime = new WaitForSeconds(attackRecharge);
+        float difficulty = GameController.sng.Difficulty;
+        Projectile proj = projectileBluePrints[index];
         while (true) {
             for (int i = 0; i < shootSources.Length; i++) {
                 Projectile p = projectiles[index].GetOrSpawnIn(transform.parent) as Projectile;
                 if (p) {
                     p.Spawn(playerId, shootSources[i]);
-                    p.SetStatesOnSpawn(p, horizontalSpeed, 0f);
+                    p.SetStatesOnSpawn(proj, proj.moveDirection, horizontalSpeed, difficulty);
                     p.ActiveObstacle = true;
                 }
             }
@@ -180,7 +190,24 @@ public class Player : MonoBehaviour {
         if (health > 0 && (k == 1 && rb.gravityScale < 0 ) ||
             k == -1 && rb.gravityScale > 0 ) {
             rb.gravityScale *= -1;
-            transform.localScale = new Vector3(1f, Mathf.Sign(rb.gravityScale), 1f);
+            if(gameObject.activeSelf) activeTilt = StartCoroutine(TiltRotate(k, 0.2f, 0.05f));
+            //transform.localScale = new Vector3(1f, Mathf.Sign(rb.gravityScale), 1f);
+        }
+    }
+
+    private Coroutine activeTilt;
+    private IEnumerator TiltRotate(int k, float tiltTime, float tiltTick) {
+        if (activeTilt != null) {
+            StopCoroutine(activeTilt);
+            transform.rotation = new Quaternion();
+        }
+        float initialTime = tiltTime;
+        float tiltAmountPerTick = -k * maxRotationDeg * tiltTick/initialTime;
+        WaitForSeconds tick = new WaitForSeconds(tiltTick);
+        while (tiltTime > 0) {
+            transform.Rotate(Vector3.forward, tiltAmountPerTick);
+            tiltTime -= tiltTick;
+            yield return tick;
         }
     }
 

@@ -42,10 +42,14 @@ public class ObstaclePack : MonoBehaviour {
                 //Debug.Log(difficulty);
                 switch (o) {
                     case Projectile projectile:
-                        projectile.SetStatesOnSpawn((Projectile)obstacleInfo[i].bluePrint, 0f, difficulty);
+                        Projectile proj = (Projectile) obstacleInfo[i].bluePrint;
+                        projectile.SetStatesOnSpawn(proj, proj.moveDirection, 0f, difficulty);
                         break;
                     case Portal portal:
                         portal.SetStatesOnSpawn(obstacleInfo[i].transf, (Portal)obstacleInfo[i].bluePrint);
+                        break;
+                    case Enemyhurt enemyhurt:
+                        enemyhurt.SetStatesOnSpawn(obstacleInfo[i].transf, (Enemyhurt)obstacleInfo[i].bluePrint, difficulty);
                         break;
                     case Enemy enemy:
                         enemy.SetStatesOnSpawn(obstacleInfo[i].transf, (Enemy)obstacleInfo[i].bluePrint, difficulty);

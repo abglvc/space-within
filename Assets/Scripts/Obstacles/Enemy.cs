@@ -2,25 +2,34 @@
 using UnityEngine;
 
 public class Enemy : Obstahurt {
-    [Header("Enemy")]
-    public float speed;
+    [Header("Enemy")] public float speed;
+
     public enum MotionType {
-        Closed, Open
+        Closed,
+        Open
     }
+
     public MotionType motionType;
+    public Transform rotatingPart;
+
     private bool forward = true;
-    
     private LinkedList<Vector3> movementPathPoints = new LinkedList<Vector3>();
     private LinkedListNode<Vector3> currentPP;
-    private Vector3 spawnPosition, goToPosition;
-    private Rigidbody2D rb;
+    protected Vector3 spawnPosition, goToPosition;
+    protected Rigidbody2D rb;
 
     protected new void Awake() {
         Initialize();
         base.Awake();
     }
 
-    private void FixedUpdate() {
+    protected void FixedUpdate() {
+        Move();
+        if(rotatingPart!=null)
+            LookAt(goToPosition);
+    }
+
+    protected void Move() {
         if (Vector3.Distance(goToPosition, transform.position) < 0.5f) {
             switch (motionType) {
                 case MotionType.Open:
@@ -39,6 +48,12 @@ public class Enemy : Obstahurt {
         else rb.AddForce((goToPosition-transform.position)*speed);
     }
     
+    protected void LookAt(Vector3 target) {
+        Vector3 dir = target - rotatingPart.position;
+        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+        rotatingPart.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
     public void SetStatesOnSpawn(Transform transformInfo, Enemy bluePrint, float difficulty) {
         spawnPosition = transformInfo.position;
         goToPosition = spawnPosition;

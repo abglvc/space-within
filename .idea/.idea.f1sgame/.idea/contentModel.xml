@@ -15,6 +15,7 @@
           <e p="Obstacles" t="Include">
             <e p="DestructableObstacle.cs" t="Include" />
             <e p="Enemy.cs" t="Include" />
+            <e p="Enemyhurt.cs" t="Include" />
             <e p="Obstacle.cs" t="Include" />
             <e p="ObstaclePack.cs" t="Include" />
             <e p="Obstahurt.cs" t="Include" />

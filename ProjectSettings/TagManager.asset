@@ -22,11 +22,11 @@ TagManager:
   - UI
   - 
   - 
-  - Projectile
+  - PlayerProjectiles
   - Player
-  - 
-  - 
-  - 
+  - EnemyProjectiles
+  - Enemies
+  - ObstacleProjectiles
   - 
   - 
   - 

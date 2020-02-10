@@ -20,14 +20,15 @@ public class DestructableObstacle : Obstacle {
     }
 
     protected void OnCollisionEnter2D(Collision2D other) {
-        GameObject g = other.gameObject;
-        if (g.CompareTag("PlayerProjectile")) {
-            Projectile up = g.GetComponent<Projectile>();
+        GameObject otherGO = other.gameObject;
+        
+        if (otherGO.CompareTag("PlayerProjectile")) {
+            Projectile up = otherGO.GetComponent<Projectile>();
             if(health-up.powerDamage <= 0) //add to score
                 Player.sng.BonusScore += maxHealth * 25;
             Health -= up.powerDamage;
             up.UsedPower();
-        }else if (g.CompareTag("Obstacle") || g.CompareTag("Obstahurt") || g.CompareTag("Enemy") || g.CompareTag("ObstacleProjectile")) {
+        }else if (otherGO.CompareTag("Obstacle") || otherGO.CompareTag("Obstahurt") || otherGO.CompareTag("Enemy") || otherGO.CompareTag("ObstacleProjectile") ) {
             ActiveObstacle = false;
         }
     }
