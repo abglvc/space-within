@@ -191,7 +191,6 @@ public class Player : MonoBehaviour {
             k == -1 && rb.gravityScale > 0 ) {
             rb.gravityScale *= -1;
             if(gameObject.activeSelf) activeTilt = StartCoroutine(TiltRotate(k, 0.2f, 0.05f));
-            //transform.localScale = new Vector3(1f, Mathf.Sign(rb.gravityScale), 1f);
         }
     }
 
@@ -230,7 +229,7 @@ public class Player : MonoBehaviour {
         if(recover) isRecovering = false;
         frameSplashObj.SetActive(false);
     }
-    
+
     private IEnumerator Blink(float duration, Color color) {
         sr.color = color;
         yield return new WaitForSeconds(duration);

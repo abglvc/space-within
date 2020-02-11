@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
     public GameObject startObstaclePack, endObstaclePack;
     public ObstaclePackPool[] obstaclePacksPool;
     public float distanceUntilNextPlanet;
+    
+    public int currentPlanet;
     public int nextPlanet;
 
     private Player player;
@@ -83,6 +85,6 @@ public class GameController : MonoBehaviour {
 
     public void LoadNextPlanet() {
         Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
-        SceneManager.LoadScene(nextPlanet);
+        SceneManager.LoadScene(nextPlanet+1);
     }
 }

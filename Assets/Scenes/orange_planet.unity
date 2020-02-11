@@ -365,7 +365,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -6
-  m_Sprite: {fileID: 21300000, guid: f9d420e1fe1be5848939248519a74841, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bfc43f1f24200e4a83eae45c845e525, type: 3}
   m_Color: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   consingletonePrefab: {fileID: 850881380824924321, guid: 450f3466005ce214fa5be8ded0790585,
     type: 3}
   obstacleHeap: {fileID: 2070600090}
-  startObstaclePack: {fileID: 1054057983039037177, guid: 784ce7ca35f24c645bd17fbdc62be6f3,
+  startObstaclePack: {fileID: 7730954779284522097, guid: be1f5ea5aff19f448a6b1b6b97e718ac,
     type: 3}
   endObstaclePack: {fileID: 724844172932456654, guid: 8890e3ad4d5eb514f89ae2c439acd994,
     type: 3}
@@ -517,7 +517,8 @@ MonoBehaviour:
   - objectPrefab: {fileID: 5147105693607845496, guid: dd7cdcfe2d14a3b469da4b27b861e28b,
       type: 3}
     maxObjects: 1
-  distanceUntilNextPlanet: 500
+  distanceUntilNextPlanet: 400
+  currentPlanet: 1
   nextPlanet: 2
 --- !u!1 &1656950907
 GameObject:

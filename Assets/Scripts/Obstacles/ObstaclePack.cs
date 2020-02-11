@@ -20,6 +20,8 @@ public class ObstaclePack : MonoBehaviour {
     private int obstaclePackId;
 
     private float difficulty;
+    private PlanetSprites planetSprites;
+    private int spawnedOnPlanet = -1;
     
     void Awake() {
         Initialize();
@@ -28,8 +30,10 @@ public class ObstaclePack : MonoBehaviour {
     private void AttachObstacles() {
         bool flipTop = flipWalls;
         bool flipBot = flipWalls;
+        
         for (int i=0; i<obstacleInfo.Count; i++) {
             Obstacle o = csg.GetObstacleFromPool(obstacleInfo[i].bluePrint.OBSTACLE_INDEX);
+            
             if (o != null) {
                 o.Spawn(obstaclePackId, obstacleInfo[i].transf);
                 
@@ -38,7 +42,6 @@ public class ObstaclePack : MonoBehaviour {
                 } else if (o.OBSTACLE_INDEX == 15) { o.GetComponent<SpriteRenderer>().flipX = flipBot;
                     flipBot = !flipBot;
                 }
-
                 //Debug.Log(difficulty);
                 switch (o) {
                     case Projectile projectile:
@@ -62,6 +65,17 @@ public class ObstaclePack : MonoBehaviour {
                         break;
                 }
                 attachedObstacles[i] = o;
+                
+                if (o.PlanetSpawn != spawnedOnPlanet && planetSprites.IdToIndex.ContainsKey(o.OBSTACLE_INDEX)) {
+                    SpriteRenderer sr = o.GetComponent<SpriteRenderer>();
+                    Sprite skin = planetSprites.GetSkin(o.OBSTACLE_INDEX);
+                    o.PlanetSpawn = spawnedOnPlanet;
+                    if (sr) sr.sprite = skin;
+                    else {
+                        SpriteRenderer[] srs = o.GetComponentsInChildren<SpriteRenderer>();
+                        for (int k = 0; k < srs.Length; k++) srs[k].sprite = skin;
+                    }
+                }
             }
         }
     }
@@ -73,6 +87,10 @@ public class ObstaclePack : MonoBehaviour {
     //flip top/bot walls
     private bool flipWalls;
     public void Spawn(float nextObstacleX, float difficulty, bool flipWalls) {
+        if (spawnedOnPlanet != GameController.sng.currentPlanet) {
+            spawnedOnPlanet = GameController.sng.currentPlanet;
+            planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet];
+        }
         transform.position = new Vector3(nextObstacleX + width / 2, 0, 0);
         this.difficulty = difficulty;
         this.flipWalls = flipWalls;

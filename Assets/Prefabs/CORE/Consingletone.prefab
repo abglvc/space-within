@@ -119,6 +119,28 @@ MonoBehaviour:
   - objectPrefab: {fileID: 4707266741689703910, guid: 12d15b38530e6b44cb1d3edb0df7d1fc,
       type: 3}
     maxObjects: 4
+  planetsSkins:
+  - sprites:
+    - {fileID: 21300000, guid: 460d6233363c4de4cbd379c69b65e08e, type: 3}
+    - {fileID: 21300000, guid: 2440f4c4087352a4b863408b5378c63d, type: 3}
+    - {fileID: 21300000, guid: 76affaa7888ccaa4db2c05ad21c977a7, type: 3}
+    - {fileID: 21300000, guid: 6fe11c290a763674a8414cbf28bb8f3d, type: 3}
+    - {fileID: 21300000, guid: da7c870ad4e11d84f8493c07cdfc1bb4, type: 3}
+    - {fileID: 21300000, guid: 120aaf82ec71357428d6a62414bca7df, type: 3}
+  - sprites:
+    - {fileID: 21300000, guid: 31fcd21ff5179a74da9700eef15eccf9, type: 3}
+    - {fileID: 21300000, guid: 170fbf99b981f9a4b885e1dc1630c0f8, type: 3}
+    - {fileID: 21300000, guid: 63ae4a6135554c74e8671d35c8c23630, type: 3}
+    - {fileID: 21300000, guid: cc23fe0fcb3790146a49c30c0160aa05, type: 3}
+    - {fileID: 21300000, guid: 2b5307060636c4e4e8ba53b2aa33c8b4, type: 3}
+    - {fileID: 21300000, guid: 7bb86f062e44a814e9160545d509a033, type: 3}
+  - sprites:
+    - {fileID: 21300000, guid: dd0126bab2c05d949bc0cbf1af49b9de, type: 3}
+    - {fileID: 21300000, guid: 5dd65b330864c144180329d2b44c0f5d, type: 3}
+    - {fileID: 21300000, guid: 2c8cfbfa233eb264f80cbaaf5288b835, type: 3}
+    - {fileID: 21300000, guid: 327c3ed9bee366143a1b0b57a7bd19a9, type: 3}
+    - {fileID: 21300000, guid: 4517c62a7129dc54bb71b8bda1573aab, type: 3}
+    - {fileID: 21300000, guid: 2e849a8c798872f468ede527c89f82cf, type: 3}
 --- !u!114 &2825046806361875144
 MonoBehaviour:
   m_ObjectHideFlags: 0
