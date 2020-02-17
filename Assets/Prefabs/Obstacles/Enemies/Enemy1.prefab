@@ -149,7 +149,7 @@ MonoBehaviour:
   OBSTACLE_INDEX: 8
   maxHealth: 3
   alwaysShowUi: 1
-  postDestructTime: 0.5
+  postDestructTime: 1
   postDestructPrefab: {fileID: 4764909241986997886, guid: 4224c1b1ddacf174c852357c658fb5e1,
     type: 3}
   powerDamage: 1
@@ -353,12 +353,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 376068709922088469, guid: 28e3d8605d479964eb3e10c4389608f5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 376068708792654965, guid: 28e3d8605d479964eb3e10c4389608f5,
         type: 3}
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 376068709922088469, guid: 28e3d8605d479964eb3e10c4389608f5,
+    - target: {fileID: 376068709943524052, guid: 28e3d8605d479964eb3e10c4389608f5,
         type: 3}
       propertyPath: m_Layer
       value: 11
@@ -377,11 +382,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 376068709943524052, guid: 28e3d8605d479964eb3e10c4389608f5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 376068708696404300, guid: 28e3d8605d479964eb3e10c4389608f5,
         type: 3}

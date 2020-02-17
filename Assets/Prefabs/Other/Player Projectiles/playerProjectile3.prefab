@@ -196,6 +196,7 @@ MonoBehaviour:
   timeAlive: 0.75
   rotationSpeed: 0
   rotatingPart: {fileID: 0}
+  soundEffect: {fileID: 8300000, guid: 0e7c48b22751c534690b05d504b7547b, type: 3}
 --- !u!212 &5835567308404609037
 SpriteRenderer:
   m_ObjectHideFlags: 0

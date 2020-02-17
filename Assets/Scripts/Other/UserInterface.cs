@@ -32,28 +32,33 @@ public class UserInterface : MonoBehaviour {
     }
 
     public void ButtonPauseClicked() {
+        AudioManager.s_inst.Play2DSound(0);
         pauseScreen.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ButtonResumeClicked() {
+        AudioManager.s_inst.Play2DSound(0);
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void ButtonRestartClicked() {
+        AudioManager.s_inst.Play2DSound(0);
         Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
         SceneManager.LoadScene(1);
     }
     
     public void ButtonMainMenuClicked() {
+        AudioManager.s_inst.Play2DSound(0);
         Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
         SceneManager.LoadScene(0);
     }
 
     public void ButtonQuitClicked() {
+        AudioManager.s_inst.Play2DSound(0);
         F1SLink.sng.QuitGameSession();
     }
 

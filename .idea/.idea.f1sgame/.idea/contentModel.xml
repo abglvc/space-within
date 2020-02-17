@@ -24,6 +24,7 @@
             <e p="RotaSpikes.cs" t="Include" />
           </e>
           <e p="Other" t="Include">
+            <e p="AudioManager.cs" t="Include" />
             <e p="Consingletone.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />

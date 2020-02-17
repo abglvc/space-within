@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
     private int projectileIndex = -1;
     private int playerId;
     private Projectile[] projectileBluePrints = new Projectile[3];
+
+    private AudioSource mainAudioSource;
     
     private void Awake() {
         if (sng == null) sng = this;
@@ -111,6 +113,8 @@ public class Player : MonoBehaviour {
         UpdateHealthUi();
         playerId = GetInstanceID();
 
+        mainAudioSource = GetComponent<AudioSource>();
+        
         for (int i = 0; i < projectileBluePrints.Length; i++)
             projectileBluePrints[i] = projectiles[i].objectPrefab as Projectile;
     }
@@ -130,10 +134,12 @@ public class Player : MonoBehaviour {
         WaitForSeconds rechargeTime = new WaitForSeconds(attackRecharge);
         float difficulty = GameController.sng.Difficulty;
         Projectile proj = projectileBluePrints[index];
+        mainAudioSource.clip = proj.soundEffect;
         while (true) {
             for (int i = 0; i < shootSources.Length; i++) {
                 Projectile p = projectiles[index].GetOrSpawnIn(transform.parent) as Projectile;
                 if (p) {
+                    if(i%2==0) mainAudioSource.Play();
                     p.Spawn(playerId, shootSources[i]);
                     p.SetStatesOnSpawn(proj, proj.moveDirection, horizontalSpeed, difficulty);
                     p.ActiveObstacle = true;

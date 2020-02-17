@@ -46,7 +46,7 @@ public class ObstaclePack : MonoBehaviour {
                 switch (o) {
                     case Projectile projectile:
                         Projectile proj = (Projectile) obstacleInfo[i].bluePrint;
-                        projectile.SetStatesOnSpawn(proj, proj.moveDirection, 0f, difficulty);
+                        projectile.SetStatesOnSpawn(proj, proj.moveDirection, 0f, difficulty, true);
                         break;
                     case Portal portal:
                         portal.SetStatesOnSpawn(obstacleInfo[i].transf, (Portal)obstacleInfo[i].bluePrint);
@@ -79,7 +79,7 @@ public class ObstaclePack : MonoBehaviour {
             }
         }
     }
-
+    
     private void DeactivateAttachedObstacles() {
         foreach (var o in attachedObstacles)
             if (o != null && obstaclePackId==o.CallerId && o.ActiveObstacle) o.ActiveObstacle = false;

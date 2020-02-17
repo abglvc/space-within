@@ -9,6 +9,8 @@ public class Projectile : Obstahurt {
 
     public int rotationSpeed;
     public Transform rotatingPart;
+
+    public AudioClip soundEffect;
     
     protected Rigidbody2D rb;
     private TrailRenderer tr;
