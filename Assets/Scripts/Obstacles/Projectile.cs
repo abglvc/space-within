@@ -31,13 +31,12 @@ public class Projectile : Obstahurt {
     }
 
     private new void Initialize() {
-        base.Initialize();
         rb = GetComponent<Rigidbody2D>();
         tr = GetComponentInChildren<TrailRenderer>();
         if (rotatingPart == null) rotatingPart = transform;
     }
     
-    public void SetStatesOnSpawn(Projectile bluePrint, Vector3 dir, float initialSpeed, float difficulty, bool dangerSignal=false) {
+    public void SetStatesOnSpawn(Projectile bluePrint, Vector3 dir, float initialSpeed, float difficulty, int newPowerDamage=0, bool dangerSignal=false) {
         if (dangerSignal) {
             UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
         }
@@ -47,6 +46,6 @@ public class Projectile : Obstahurt {
         timeAlive = bluePrint.timeAlive;
         if(tr) tr.Clear();
         StartCoroutine(Destruct());
-        base.SetStatesOnSpawn(bluePrint, difficulty);
+        base.SetStatesOnSpawn(bluePrint, difficulty, newPowerDamage);
     }
 }

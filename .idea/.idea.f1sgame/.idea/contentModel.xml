@@ -10,7 +10,9 @@
           <e p="Controllers" t="Include">
             <e p="CameraController.cs" t="Include" />
             <e p="F1SLink.cs" t="Include" />
+            <e p="FreerunGC.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
+            <e p="LevelGC.cs" t="Include" />
           </e>
           <e p="Obstacles" t="Include">
             <e p="DestructableObstacle.cs" t="Include" />
@@ -26,8 +28,11 @@
           <e p="Other" t="Include">
             <e p="AudioManager.cs" t="Include" />
             <e p="Consingletone.cs" t="Include" />
+            <e p="DAO.cs" t="Include" />
+            <e p="DataStorage.cs" t="Include" />
             <e p="MainMenu.cs" t="Include" />
             <e p="ObjectPool.cs" t="Include" />
+            <e p="TextColorLoop.cs" t="Include" />
             <e p="UserInterface.cs" t="Include" />
           </e>
           <e p="Parallax" t="Include">

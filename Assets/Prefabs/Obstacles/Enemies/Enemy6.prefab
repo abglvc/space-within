@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OBSTACLE_INDEX: 18
-  maxHealth: 4
+  maxHealth: 3
   alwaysShowUi: 1
-  postDestructTime: 1
+  postDestructTime: 0.5
   postDestructPrefab: {fileID: 4764909241986997886, guid: 4224c1b1ddacf174c852357c658fb5e1,
     type: 3}
   powerDamage: 2

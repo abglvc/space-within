@@ -1,23 +1,25 @@
-﻿using MyObjectPooling;
+﻿using System;
+using MyObjectPooling;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
+public abstract class GameController : MonoBehaviour {
     public static GameController sng { get; private set; } //singletone
-    public GameObject consingletonePrefab;
-    public Transform obstacleHeap;
-    public GameObject startObstaclePack, endObstaclePack;
-    public ObstaclePackPool[] obstaclePacksPool;
-    public float distanceUntilNextPlanet;
-    
-    public int currentPlanet;
-    public int nextPlanet;
 
-    private Player player;
+    public String gameName = "Level";
+    public int thisPlanet;
+    public GameObject consingletonePrefab;
+    public Transform obstaclePackHeap;
+    public ObstaclePackPool[] obstaclePacksPool;
+
+    protected DAO dao;
+    protected float distanceTraveled;
+    protected int currentObstPack = -1;
+    protected Player player;
     private GameObject consingletone;
     private float nextObstacleX = 0f;
     private bool endReached = false;
-    private Rigidbody2D rb;
+    private bool flipWalls = true;
+    private bool previousEvenNumberPlatform = false;
 
     private void Awake() {
         if (sng == null) sng = this;
@@ -29,19 +31,24 @@ public class GameController : MonoBehaviour {
         Initialize();
     }
 
-    private float distanceTraveled;
+    private void OnDisable() {
+        dao.Save();
+    }
 
     void Update() {
         distanceTraveled = player.DistanceTraveled();
-        if (distanceTraveled + 15f > nextObstacleX) SpawnObstaclePack();
+        if (!endReached && distanceTraveled + 15f > nextObstacleX) SpawnObstaclePack();
     }
 
     private void Initialize() {
+        dao = new DAO();
         if (Consingletone.sng == null) {
             consingletone = Instantiate(consingletonePrefab, Vector3.zero, new Quaternion());
             DontDestroyOnLoad(consingletone);
         }
 
+        Camera.main.GetComponent<CameraController>()
+            .AdjustBackgroundImage(Consingletone.sng.planetsSkins[thisPlanet - 1].planetBackground);
         player = Player.sng;
 
         player.previousDistance = 0;
@@ -53,25 +60,26 @@ public class GameController : MonoBehaviour {
         Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = -6;
     }
 
-    private bool flipWalls = true;
-    private bool previousEvenNumberPlatform = false;
-
     private void SpawnObstaclePack() {
         if (nextObstacleX < 0.5f) {
-            GameObject obstaclePack = Instantiate(startObstaclePack, obstacleHeap);
+            GameObject obstaclePack =
+                Instantiate(Consingletone.sng.planetStartPlatforms[thisPlanet - 1], obstaclePackHeap);
             obstaclePack.transform.position = new Vector3(nextObstacleX + 20f / 2, 0, 0);
             nextObstacleX += 20f;
         }
-        else if (!endReached && Difficulty > 1f) {
-            GameObject obstaclePack = Instantiate(endObstaclePack, obstacleHeap);
-            obstaclePack.transform.position = new Vector3(nextObstacleX + 25f / 2, 0, 0);
+        else if (Difficulty() >= 1f) {
+            GameObject obstaclePack = Instantiate(Consingletone.sng.planetEndPlatform, obstaclePackHeap);
+            obstaclePack.transform.position = new Vector3(nextObstacleX + 20f / 2, 0, 0);
             endReached = true;
         }
-        else if (!endReached) {
+        else {
+            int thisObstPack = NextObstaclePack();
             ObstaclePack obstaclePack =
-                obstaclePacksPool[Random.Range(0, obstaclePacksPool.Length)].GetOrSpawnIn(obstacleHeap);
+                obstaclePacksPool[thisObstPack].GetOrSpawnIn(obstaclePackHeap);
             if (obstaclePack) {
-                obstaclePack.Spawn(nextObstacleX, Difficulty, flipWalls);
+                if(this is LevelGC) ((LevelGC)this).ConfirmObstPackSpawn();
+                currentObstPack = thisObstPack;
+                obstaclePack.Spawn(nextObstacleX, Difficulty(), flipWalls);
                 previousEvenNumberPlatform = obstaclePack.evenNumberPlatforms;
                 flipWalls = !flipWalls && !previousEvenNumberPlatform || flipWalls && previousEvenNumberPlatform;
                 nextObstacleX += obstaclePack.width;
@@ -79,12 +87,11 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public float Difficulty {
-        get => distanceTraveled / distanceUntilNextPlanet;
-    }
+    public abstract float Difficulty();
 
-    public void LoadNextPlanet() {
-        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
-        SceneManager.LoadScene(nextPlanet+1);
-    }
+    public abstract int NextObstaclePack();
+
+    public abstract int CalculateStars();
+    
+    public abstract void EndGame();
 }

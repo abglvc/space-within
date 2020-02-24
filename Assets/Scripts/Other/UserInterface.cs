@@ -1,17 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
     public Text scoreText, bonusText;
-    public GameObject deathScreen, pauseScreen;
+    public GameObject endScreen, pauseScreen;
     public Image frameSplash;
     public RectTransform cautionGraphics;
     public Slider sensorSlider;
     public Image[] sensors;
     public Color sensorOnColor;
     public Color sensorOffColor;
+
+
+    [Header("End Screen")] 
+    public Text gameNameText1;
+    public Text gameNameText2;
+    public Text highScoreText;
+    public Image stateImage;
+    public Sprite[] stateSprites;
+    public Text endScoreText;
+    public GameObject[] stars;
+    public GameObject congratsText;
 
     private void Awake() {
         if (sng == null) sng = this;
@@ -54,6 +67,7 @@ public class UserInterface : MonoBehaviour {
         AudioManager.s_inst.Play2DSound(0);
         Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
@@ -85,6 +99,24 @@ public class UserInterface : MonoBehaviour {
 
     public void UpdateBonusScore(int bonusScore) {
         bonusText.text = bonusScore.ToString();
+    }
+
+    private IEnumerator ShowStars(int nStars) {
+        for (int i = 0; i < nStars; i++) {
+            yield return new WaitForSeconds(1f);
+            stars[i].SetActive(false);
+        }
+    }
+
+    public void ShowDeathScreen(String gameName, int highScore, int state, int nStars, bool showCongratulation) {
+        Debug.Log(String.Format("gamename: {0}, highscore: {1}, state: {2}, stars: {3}, congrats: {4} ", gameName, highScore, state,nStars,showCongratulation));
+        gameNameText1.text = gameName; gameNameText2.text = gameName;
+        stateImage.sprite = stateSprites[state];
+        highScoreText.text = highScore.ToString();
+        congratsText.SetActive(showCongratulation);
+        endScoreText.text = scoreText.text;
+        StartCoroutine(ShowStars(nStars));
+        endScreen.SetActive(true);
     }
 
     public void SignalDanger(float yWorldPosition) {

@@ -100,12 +100,12 @@ MonoBehaviour:
   OBSTACLE_INDEX: 19
   maxHealth: 4
   alwaysShowUi: 1
-  postDestructTime: 1
+  postDestructTime: 0.5
   postDestructPrefab: {fileID: 4764909241986997886, guid: 4224c1b1ddacf174c852357c658fb5e1,
     type: 3}
   powerDamage: 2
   contactDestroy: 1
-  speed: 0.75
+  speed: 1
   motionType: 0
   rotatingPart: {fileID: 0}
 --- !u!50 &4324591098757489281

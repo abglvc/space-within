@@ -54,8 +54,8 @@ public class Enemy : Obstahurt {
         rotatingPart.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    public void SetStatesOnSpawn(Transform transformInfo, Enemy bluePrint, float difficulty) {
-        spawnPosition = transformInfo.position;
+    public void SetStatesOnSpawn(Enemy bluePrint, float difficulty) {
+        spawnPosition = transform.position;
         goToPosition = spawnPosition;
         motionType = bluePrint.motionType;
         speed = bluePrint.speed * (1f + difficulty);

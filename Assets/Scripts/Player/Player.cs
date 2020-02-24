@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
     [Header("UI Health")]
     public Text healthText;
     public Slider healthSlider;
+    public Text powerupDurationText;
+    public Slider powerupDurationSlider;
     public Color colorHurt, colorHeal;
     
     private int health;
@@ -54,9 +56,11 @@ public class Player : MonoBehaviour {
                 previousDistance = dist;
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow) && rb.gravityScale < 0 || Input.GetKeyDown(KeyCode.UpArrow) && rb.gravityScale > 0 )
-                rb.gravityScale *= -1;
-        
+            int k = 0;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) k = 1;
+            else if (Input.GetKeyDown(KeyCode.UpArrow)) k = -1;
+            OnGravityDirectionChange(k);
+
             if (Time.time > nextVelocityCheck) {
                 if (rb.velocity.x < 0 || rb.velocity.magnitude < horizontalSpeed / 2) {
                     rb.velocity = Vector2.right * horizontalSpeed;
@@ -94,7 +98,15 @@ public class Player : MonoBehaviour {
                  other.GetComponent<LayerImage>().ActiveLayerImage = false;
                  break;
              case "EndPortal":
-                 GameController.sng.LoadNextPlanet();
+                 GameController gc = GameController.sng;
+                 switch (gc) {
+                    case FreerunGC freerunGc:
+                        freerunGc.LoadNextPlanet();
+                        break;
+                    case LevelGC levelGc:
+                        levelGc.EndGame();
+                        break;
+                 }
                  break;
              case "StartPack":
                  Destroy(other.gameObject);
@@ -132,7 +144,7 @@ public class Player : MonoBehaviour {
         }
         if(projectileIndex == -1) yield break;
         WaitForSeconds rechargeTime = new WaitForSeconds(attackRecharge);
-        float difficulty = GameController.sng.Difficulty;
+        float difficulty = GameController.sng.Difficulty();
         Projectile proj = projectileBluePrints[index];
         mainAudioSource.clip = proj.soundEffect;
         while (true) {
@@ -174,12 +186,12 @@ public class Player : MonoBehaviour {
 
     private void Death() {
         if (postDestructPrefab) {
-            GameObject destruct = Instantiate(postDestructPrefab, GameController.sng.obstacleHeap);
+            GameObject destruct = Instantiate(postDestructPrefab, GameController.sng.obstaclePackHeap);
             destruct.transform.position = transform.position;
             Destroy(destruct, postDestructTime);
         }
         gameObject.SetActive(false);
-        UserInterface.sng.deathScreen.SetActive(true);
+        GameController.sng.EndGame();
     }
 
     public void UpdateDepth(int depth) {
@@ -244,12 +256,23 @@ public class Player : MonoBehaviour {
 
     private Coroutine activePowerPickup;
     
-    public IEnumerator ActivatePowerPickup(int index, float effectTime) {
+    public IEnumerator ActivatePowerPickup(int index, int effectTime) {
         if (activePowerPickup != null) {
             StopCoroutine(activePowerPickup);
         }
         activeAutomaticShoot = StartCoroutine(AutomaticShoot(index));
-        yield return new WaitForSeconds(effectTime);
+        //slider
+        WaitForSeconds tick = new WaitForSeconds(1);
+        powerupDurationSlider.gameObject.SetActive(true);
+        powerupDurationSlider.maxValue = effectTime;
+        while (effectTime > 0) {
+            powerupDurationSlider.value = effectTime;
+            powerupDurationText.text = effectTime.ToString();
+            effectTime -= 1;
+            yield return tick;
+        }
+        powerupDurationSlider.gameObject.SetActive(false);
+        //slider
         activeAutomaticShoot = StartCoroutine(AutomaticShoot(-1));
     }
 
@@ -259,7 +282,7 @@ public class Player : MonoBehaviour {
             if (health > 0) {
                 if (value < health) {
                     if (!isRecovering) {
-                        Debug.Log("IT HITS YOU");
+                        //Debug.Log("IT HITS YOU");
                         health = value <= 0 ? 0 : value;
                         if (health == 0) Death();
                         else {

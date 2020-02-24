@@ -7,7 +7,9 @@ public class Consingletone : MonoBehaviour {
     public static Consingletone sng { get; private set; } //singletone
     public ObstaclePool[] obstaclesPool;
     public PlanetSprites[] planetsSkins;
-    
+    public GameObject[] planetStartPlatforms;
+    public GameObject planetEndPlatform;
+
     private void Awake() {
         if (sng == null) sng = this;
         else {
@@ -24,10 +26,11 @@ public class Consingletone : MonoBehaviour {
 [Serializable]
 public class PlanetSprites {
     public Sprite[] sprites;
+    public Sprite planetBackground;
     private Dictionary<int, int> idToIndex = new Dictionary<int, int> {
         {7, 0}, {1, 1}, {-1, 2}, {3, 3}, {0, 4}, {15, 5}, {14, 4}
     };
-        
+
     public Sprite GetSkin(int obsID) {
         return sprites[idToIndex[obsID]];
     }

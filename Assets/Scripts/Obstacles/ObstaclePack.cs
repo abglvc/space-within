@@ -46,22 +46,28 @@ public class ObstaclePack : MonoBehaviour {
                 switch (o) {
                     case Projectile projectile:
                         Projectile proj = (Projectile) obstacleInfo[i].bluePrint;
-                        projectile.SetStatesOnSpawn(proj, proj.moveDirection, 0f, difficulty, true);
+                        projectile.SetStatesOnSpawn(proj, proj.moveDirection, 0f, difficulty, dangerSignal:true);
                         break;
                     case Portal portal:
                         portal.SetStatesOnSpawn(obstacleInfo[i].transf, (Portal)obstacleInfo[i].bluePrint);
                         break;
                     case Enemyhurt enemyhurt:
-                        enemyhurt.SetStatesOnSpawn(obstacleInfo[i].transf, (Enemyhurt)obstacleInfo[i].bluePrint, difficulty);
+                        enemyhurt.SetStatesOnSpawn((Enemyhurt)obstacleInfo[i].bluePrint, difficulty);
                         break;
                     case Enemy enemy:
-                        enemy.SetStatesOnSpawn(obstacleInfo[i].transf, (Enemy)obstacleInfo[i].bluePrint, difficulty);
+                        enemy.SetStatesOnSpawn((Enemy)obstacleInfo[i].bluePrint, difficulty);
                         break;
                     case RotaSpikes rotaSpikes:
                         rotaSpikes.SetStatesOnSpawn((RotaSpikes)obstacleInfo[i].bluePrint, difficulty);
                         break;
                     case Obstahurt obstahurt:
                         obstahurt.SetStatesOnSpawn((Obstahurt)obstacleInfo[i].bluePrint, difficulty);
+                        break;
+                    case PowerPickup powerPickup:
+                        powerPickup.SetStatesOnSpawn((PowerPickup)obstacleInfo[i].bluePrint);
+                        break;
+                    case HealthPickup healthPickup:
+                        healthPickup.SetStatesOnSpawn((HealthPickup)obstacleInfo[i].bluePrint);
                         break;
                 }
                 attachedObstacles[i] = o;
@@ -87,9 +93,9 @@ public class ObstaclePack : MonoBehaviour {
     //flip top/bot walls
     private bool flipWalls;
     public void Spawn(float nextObstacleX, float difficulty, bool flipWalls) {
-        if (spawnedOnPlanet != GameController.sng.currentPlanet) {
-            spawnedOnPlanet = GameController.sng.currentPlanet;
-            planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet];
+        if (spawnedOnPlanet != GameController.sng.thisPlanet) {
+            spawnedOnPlanet = GameController.sng.thisPlanet;
+            planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet-1];
         }
         transform.position = new Vector3(nextObstacleX + width / 2, 0, 0);
         this.difficulty = difficulty;

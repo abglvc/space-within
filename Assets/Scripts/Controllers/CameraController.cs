@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour {
     }
 
     void Start() {
-        AdjustBackgroundImage();
         target = Player.sng.transform;
         if (target)
             transform.position = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset), transform.position.y,
@@ -29,7 +28,8 @@ public class CameraController : MonoBehaviour {
         }
     }
 
-    private void AdjustBackgroundImage() {
+    public void AdjustBackgroundImage(Sprite bgSprite) {
+        bgSpriteRenderer.sprite = bgSprite;
         //BACGROUND IMAGE SET
         float cameraHeight = Camera.main.orthographicSize * 2;
         Vector2 cameraSize = new Vector2(Camera.main.aspect * cameraHeight, cameraHeight);

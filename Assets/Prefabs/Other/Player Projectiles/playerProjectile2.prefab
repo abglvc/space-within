@@ -190,7 +190,7 @@ MonoBehaviour:
   postDestructTime: 0
   postDestructPrefab: {fileID: 0}
   powerDamage: 2
-  contactDestroy: 0
+  contactDestroy: 1
   speed: 10
   moveDirection: {x: 1, y: 0, z: 0}
   timeAlive: 1

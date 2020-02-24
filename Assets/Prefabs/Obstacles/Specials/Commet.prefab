@@ -188,12 +188,12 @@ MonoBehaviour:
   OBSTACLE_INDEX: 5
   maxHealth: 2
   alwaysShowUi: 1
-  postDestructTime: 1
+  postDestructTime: 0.5
   postDestructPrefab: {fileID: 4764909241986997886, guid: 4224c1b1ddacf174c852357c658fb5e1,
     type: 3}
   powerDamage: 1
   contactDestroy: 1
-  speed: 10
+  speed: 8
   moveDirection: {x: -1, y: 0, z: 0}
   timeAlive: 3
   rotationSpeed: 120
@@ -444,11 +444,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 376068708792654965, guid: 28e3d8605d479964eb3e10c4389608f5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 376068709943524052, guid: 28e3d8605d479964eb3e10c4389608f5,
         type: 3}
       propertyPath: m_Layer
@@ -470,6 +465,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 376068708696404300, guid: 28e3d8605d479964eb3e10c4389608f5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 376068708792654965, guid: 28e3d8605d479964eb3e10c4389608f5,
         type: 3}
       propertyPath: m_Layer
       value: 0

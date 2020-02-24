@@ -98,14 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OBSTACLE_INDEX: 9
-  maxHealth: 4
+  maxHealth: 1
   alwaysShowUi: 1
-  postDestructTime: 1
+  postDestructTime: 0.5
   postDestructPrefab: {fileID: 4764909241986997886, guid: 4224c1b1ddacf174c852357c658fb5e1,
     type: 3}
-  powerDamage: 2
+  powerDamage: 1
   contactDestroy: 1
-  speed: 0.75
+  speed: 0.25
   motionType: 0
   rotatingPart: {fileID: 0}
 --- !u!50 &824855782751793021

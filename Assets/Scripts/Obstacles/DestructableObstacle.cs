@@ -9,7 +9,7 @@ public class DestructableObstacle : Obstacle {
     public float postDestructTime;
     public GameObject postDestructPrefab;
     private int health;
-    private Canvas UICanvas;
+    protected Canvas UICanvas;
     private Text healthText;
     private Slider healthSlider;
     private SpriteRenderer sr;
@@ -37,7 +37,7 @@ public class DestructableObstacle : Obstacle {
         if(sr) sr.color = realColor;
         maxHealth = Mathf.RoundToInt(bluePrint.maxHealth * (1f + difficulty));
         health = maxHealth;
-        if (maxHealth > 1) {
+        if (maxHealth > 0 && healthSlider) {
             healthSlider.maxValue = maxHealth;
             UpdateHealthUi(alwaysShowUi);
         }
@@ -46,7 +46,7 @@ public class DestructableObstacle : Obstacle {
     protected void Initialize() {
         sr = GetComponent<SpriteRenderer>();
         if(sr) realColor = sr.color;
-        UICanvas = GetComponentInChildren<Canvas>();
+        if(!UICanvas) UICanvas = GetComponentInChildren<Canvas>();
         if (UICanvas) {
             healthText = UICanvas.GetComponentInChildren<Text>();
             healthSlider = UICanvas.GetComponentInChildren<Slider>();
@@ -56,7 +56,7 @@ public class DestructableObstacle : Obstacle {
 
     private void Destruct() {
         if (postDestructPrefab) {
-            GameObject destruct = Instantiate(postDestructPrefab, GameController.sng.obstacleHeap);
+            GameObject destruct = Instantiate(postDestructPrefab, GameController.sng.obstaclePackHeap);
             destruct.transform.position = transform.position;
             Destroy(destruct, postDestructTime);
         }

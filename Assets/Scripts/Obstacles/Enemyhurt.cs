@@ -5,15 +5,16 @@ public class Enemyhurt : Enemy {
     [Header("Enemyhurt")] 
     public float attackRange;
     public float attackRecharge;
-    public ObstaclePool projectile;
     public Transform shootSource;
+    public Projectile projectileBluePrint;
     
+    private Consingletone csg;
     private Transform playerTransform;
     private float nextShot = 0f;
-    private Transform obstacleHeap;
     private int enemyId;
     private float difficulty;
-    private Projectile projectileBluePrint;
+
+    private AudioSource mainAudioSource;
 
     protected new void Awake() {
         Initialize();
@@ -35,10 +36,12 @@ public class Enemyhurt : Enemy {
     }
 
     private void ShootPlayer() {
-        Projectile p = projectile.GetOrSpawnIn(obstacleHeap) as Projectile;
+        Projectile p = csg.obstaclesPool[projectileBluePrint.OBSTACLE_INDEX].GetOrSpawnIn(transform.parent) as Projectile;
+        mainAudioSource.clip = p.soundEffect;
         if (p) {
+            mainAudioSource.Play();
             p.Spawn(enemyId, shootSource);
-            p.SetStatesOnSpawn(projectileBluePrint, (playerTransform.position-transform.position).normalized ,0, difficulty);
+            p.SetStatesOnSpawn(projectileBluePrint, (playerTransform.position-transform.position).normalized ,0, difficulty, powerDamage);
             p.ActiveObstacle = true;
         }
     }
@@ -49,16 +52,16 @@ public class Enemyhurt : Enemy {
         }
     }
 
-    public new void SetStatesOnSpawn(Transform transformInfo, Enemy bluePrint, float difficulty) {
+    public new void SetStatesOnSpawn(Enemy bluePrint, float difficulty) {
         playerTransform = null;
         this.difficulty = difficulty;
-        base.SetStatesOnSpawn(transformInfo, bluePrint, difficulty);
+        base.SetStatesOnSpawn(bluePrint, difficulty);
     }
     
     protected new void Initialize() {
-        projectileBluePrint = projectile.objectPrefab as Projectile;
+        csg = Consingletone.sng;
         enemyId = GetInstanceID();
-        obstacleHeap = GameController.sng.obstacleHeap;
         GetComponent<CircleCollider2D>().radius = attackRange;
+        mainAudioSource = GetComponent<AudioSource>();
     }
 }
