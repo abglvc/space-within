@@ -33,7 +33,8 @@ public class Player : MonoBehaviour {
     private int playerId;
     private Projectile[] projectileBluePrints = new Projectile[3];
 
-    private AudioSource mainAudioSource;
+    private AudioManager audioManager;
+    private AudioSource projAudioSrc, impactAudioSrc, pickupAudioSource;
     
     private void Awake() {
         if (sng == null) sng = this;
@@ -101,9 +102,10 @@ public class Player : MonoBehaviour {
                  GameController gc = GameController.sng;
                  switch (gc) {
                     case FreerunGC freerunGc:
-                        freerunGc.LoadNextPlanet();
+                        StartCoroutine(freerunGc.LoadNextPlanet(this));
                         break;
                     case LevelGC levelGc:
+                        InPortal(true);
                         levelGc.EndGame();
                         break;
                  }
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Initialize() {
+        audioManager = AudioManager.s_inst;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
@@ -125,8 +128,11 @@ public class Player : MonoBehaviour {
         UpdateHealthUi();
         playerId = GetInstanceID();
 
-        mainAudioSource = GetComponent<AudioSource>();
-        
+        AudioSource[] x = GetComponents<AudioSource>();
+        projAudioSrc = x[0];
+        impactAudioSrc = x[1];
+        pickupAudioSource = x[2];
+
         for (int i = 0; i < projectileBluePrints.Length; i++)
             projectileBluePrints[i] = projectiles[i].objectPrefab as Projectile;
     }
@@ -146,12 +152,13 @@ public class Player : MonoBehaviour {
         WaitForSeconds rechargeTime = new WaitForSeconds(attackRecharge);
         float difficulty = GameController.sng.Difficulty();
         Projectile proj = projectileBluePrints[index];
-        mainAudioSource.clip = proj.soundEffect;
+        projAudioSrc.clip = proj.soundEffect;
+        
         while (true) {
             for (int i = 0; i < shootSources.Length; i++) {
                 Projectile p = projectiles[index].GetOrSpawnIn(transform.parent) as Projectile;
                 if (p) {
-                    if(i%2==0) mainAudioSource.Play();
+                    if(i%2==0) projAudioSrc.Play();
                     p.Spawn(playerId, shootSources[i]);
                     p.SetStatesOnSpawn(proj, proj.moveDirection, horizontalSpeed, difficulty);
                     p.ActiveObstacle = true;
@@ -163,6 +170,7 @@ public class Player : MonoBehaviour {
 
     public void InPortal(bool value) {
         if (value) {
+            audioManager.Play2DSound(4);
             if (activeAutomaticShoot != null) {
                 StopCoroutine(activeAutomaticShoot);
             }
@@ -174,9 +182,12 @@ public class Player : MonoBehaviour {
     }
 
     public void CaughtPickup(Pickup pickup) {
+        pickupAudioSource.clip = pickup.onPickupSound;
+        pickupAudioSource.Play();
+        
         switch (pickup) {
             case PowerPickup powerPickup:
-                activePowerPickup = StartCoroutine(ActivatePowerPickup(powerPickup.projectile, powerPickup.effectTime));
+                activePowerPickup = StartCoroutine(ActivatePowerPickup(powerPickup));
                 break;
             case HealthPickup healthPickup:
                 Health += healthPickup.healValue;
@@ -186,7 +197,7 @@ public class Player : MonoBehaviour {
 
     private void Death() {
         if (postDestructPrefab) {
-            GameObject destruct = Instantiate(postDestructPrefab, GameController.sng.obstaclePackHeap);
+            GameObject destruct = Instantiate(postDestructPrefab, transform.parent);
             destruct.transform.position = transform.position;
             Destroy(destruct, postDestructTime);
         }
@@ -236,30 +247,33 @@ public class Player : MonoBehaviour {
         }
         isRecovering = recover;
         WaitForSeconds tick = new WaitForSeconds(tickTime);
-        float tRecovery = recoveryTime;
+        float time = recover ? recoveryTime : tickTime;
         UserInterface.sng.frameSplash.color = color;
         GameObject frameSplashObj = UserInterface.sng.frameSplash.gameObject;
-        while (tRecovery > 0) {
+        while (time > 0) {
+            sr.color = sr.color == Color.white ? color : Color.white;
             frameSplashObj.SetActive(!frameSplashObj.activeSelf);
-            tRecovery -= tickTime;
+            time -= tickTime;
             yield return tick;
         }
         if(recover) isRecovering = false;
+        sr.color = Color.white;
         frameSplashObj.SetActive(false);
     }
-
-    private IEnumerator Blink(float duration, Color color) {
-        sr.color = color;
-        yield return new WaitForSeconds(duration);
-        sr.color = Color.white;
-    }
-
+    
     private Coroutine activePowerPickup;
     
-    public IEnumerator ActivatePowerPickup(int index, int effectTime) {
+    public IEnumerator ActivatePowerPickup(PowerPickup powerPickup) {
+        int index = powerPickup.projectile;
+        int effectTime = powerPickup.effectTime;
+        AudioSource musicSource = audioManager.MusicSource;
+        
         if (activePowerPickup != null) {
             StopCoroutine(activePowerPickup);
         }
+        musicSource.Stop();
+        musicSource.clip = powerPickup.onPickMusic;
+        musicSource.Play();
         activeAutomaticShoot = StartCoroutine(AutomaticShoot(index));
         //slider
         WaitForSeconds tick = new WaitForSeconds(1);
@@ -271,8 +285,11 @@ public class Player : MonoBehaviour {
             effectTime -= 1;
             yield return tick;
         }
+        musicSource.Stop();
+        musicSource.clip = audioManager.loopMusicTrack;
+        musicSource.Play();
+        
         powerupDurationSlider.gameObject.SetActive(false);
-        //slider
         activeAutomaticShoot = StartCoroutine(AutomaticShoot(-1));
     }
 
@@ -286,14 +303,14 @@ public class Player : MonoBehaviour {
                         health = value <= 0 ? 0 : value;
                         if (health == 0) Death();
                         else {
+                            impactAudioSrc.Play();
                             activeFrameSplash = StartCoroutine(FrameSplash(0.2f, colorHurt, true));
-                            StartCoroutine(Blink(0.1f, colorHurt));
                         }
                     }
                 }
                 else {
                     health = value > maxHealth ? maxHealth : value;
-                    activeFrameSplash = StartCoroutine(FrameSplash(0.2f, colorHeal, false));
+                    activeFrameSplash = StartCoroutine(FrameSplash(0.3f, colorHeal, false));
                 }
                 UpdateHealthUi();
             }

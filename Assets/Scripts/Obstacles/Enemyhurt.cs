@@ -13,8 +13,9 @@ public class Enemyhurt : Enemy {
     private float nextShot = 0f;
     private int enemyId;
     private float difficulty;
+    private int projectileDamage;
 
-    private AudioSource mainAudioSource;
+    private AudioSource projAudioSrc;
 
     protected new void Awake() {
         Initialize();
@@ -37,11 +38,11 @@ public class Enemyhurt : Enemy {
 
     private void ShootPlayer() {
         Projectile p = csg.obstaclesPool[projectileBluePrint.OBSTACLE_INDEX].GetOrSpawnIn(transform.parent) as Projectile;
-        mainAudioSource.clip = p.soundEffect;
+        projAudioSrc.clip = p.soundEffect;
         if (p) {
-            mainAudioSource.Play();
+            projAudioSrc.Play();
             p.Spawn(enemyId, shootSource);
-            p.SetStatesOnSpawn(projectileBluePrint, (playerTransform.position-transform.position).normalized ,0, difficulty, powerDamage);
+            p.SetStatesOnSpawn(projectileBluePrint, (playerTransform.position-transform.position).normalized ,0, difficulty, projectileDamage);
             p.ActiveObstacle = true;
         }
     }
@@ -55,6 +56,7 @@ public class Enemyhurt : Enemy {
     public new void SetStatesOnSpawn(Enemy bluePrint, float difficulty) {
         playerTransform = null;
         this.difficulty = difficulty;
+        projectileDamage = Mathf.RoundToInt((1f + difficulty) * powerDamage / 2f);
         base.SetStatesOnSpawn(bluePrint, difficulty);
     }
     
@@ -62,6 +64,6 @@ public class Enemyhurt : Enemy {
         csg = Consingletone.sng;
         enemyId = GetInstanceID();
         GetComponent<CircleCollider2D>().radius = attackRange;
-        mainAudioSource = GetComponent<AudioSource>();
+        projAudioSrc = GetComponents<AudioSource>()[1];
     }
 }

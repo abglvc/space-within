@@ -14,6 +14,7 @@ public class DestructableObstacle : Obstacle {
     private Slider healthSlider;
     private SpriteRenderer sr;
     private Color realColor;
+    private AudioSource impactAudioSrc;
 
     protected void Awake() {
         Initialize();
@@ -26,9 +27,10 @@ public class DestructableObstacle : Obstacle {
             Projectile up = otherGO.GetComponent<Projectile>();
             if(health-up.powerDamage <= 0) //add to score
                 Player.sng.BonusScore += maxHealth * 25;
+            else impactAudioSrc.Play();
             Health -= up.powerDamage;
             up.UsedPower();
-        }else if (otherGO.CompareTag("Obstacle") || otherGO.CompareTag("Obstahurt") || otherGO.CompareTag("Enemy") || otherGO.CompareTag("ObstacleProjectile") ) {
+        }else if (tag.Equals("PlayerProjectile") || tag.Equals("ObstacleProjectile")) {
             ActiveObstacle = false;
         }
     }
@@ -44,6 +46,7 @@ public class DestructableObstacle : Obstacle {
     }
 
     protected void Initialize() {
+        impactAudioSrc = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         if(sr) realColor = sr.color;
         if(!UICanvas) UICanvas = GetComponentInChildren<Canvas>();
@@ -83,5 +86,17 @@ public class DestructableObstacle : Obstacle {
         UICanvas.enabled = showCanvas;
         healthText.text = Health.ToString();
         healthSlider.value = Health;
+    }
+
+    public int MaxHealth {
+        get => maxHealth;
+        set {
+            if (UICanvas) {
+                healthSlider.maxValue = value;
+                healthSlider.value = value;
+                healthText.text = value.ToString();
+            }
+            maxHealth = value;
+        }
     }
 }

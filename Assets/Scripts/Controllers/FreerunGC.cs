@@ -1,13 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FreerunGC : GameController {
-    [Header("Freerun")] 
+    [Header("Freerun")]
     public float distanceUntilNextPlanet;
     public int nextPlanet;
+    private SpriteRenderer srBackground;
+    const float TRAVEL_TIME=0.8f;
 
-    public void LoadNextPlanet() {
-        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
+    private void Start() {
+        srBackground = Camera.main.GetComponentInChildren<SpriteRenderer>();
+    }
+
+    public IEnumerator LoadNextPlanet(Player p){
+        p.InPortal(true);
+        yield return new WaitForSeconds(TRAVEL_TIME);
+        p.InPortal(false);
+        srBackground.sortingOrder = 6;
         SceneManager.LoadScene(nextPlanet);
     }
 
@@ -21,7 +31,10 @@ public class FreerunGC : GameController {
     }
 
     public override int CalculateStars() {
-        return Mathf.RoundToInt((thisPlanet - 1) + Difficulty());
+        int previousHighScore = dao.data.highScores.freerun;
+        int stars = 3;
+        if (previousHighScore != 0) stars = Mathf.RoundToInt((float) player.Score / previousHighScore * 3);
+        return stars > 3 ? 3 : stars;
     }
     
     public override void EndGame() {
@@ -39,7 +52,7 @@ public class FreerunGC : GameController {
             dao.data.highScores.freerun = highScore;
             dao.data.freerunState = state;
         }
-
+        
         UserInterface.sng.ShowDeathScreen(gameName, highScore, state-1, nStars, showCongrats);
     }
 }

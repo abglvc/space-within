@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
     public static AudioManager s_inst{get; private set;}
@@ -6,17 +7,29 @@ public class AudioManager : MonoBehaviour {
     
     private AudioSource[] soundSources;
     private AudioSource musicSource;
-    
+    public AudioClip loopMusicTrack;
+
     void Awake(){
         if(s_inst==null) s_inst=this;
         else{
             Destroy(s_inst);
             s_inst = this;
         }
+        Initialize();
+    }
+
+    private void Initialize() {
         soundSources = GetComponents<AudioSource>();
         musicSource = soundSources[soundSources.Length - 1];
+
+        GameController gc = GameController.sng;
+        if (gc) {
+            loopMusicTrack = gc.musicTrack;
+            musicSource.clip = loopMusicTrack;
+            musicSource.Play();
+        }
     }
-    
+
     public void Play2DSound(int sound){
         if(playSounds) soundSources[sound].Play();
     }
@@ -37,4 +50,6 @@ public class AudioManager : MonoBehaviour {
         get => playSounds;
         set => playSounds = value;
     }
+
+    public AudioSource MusicSource => musicSource;
 }

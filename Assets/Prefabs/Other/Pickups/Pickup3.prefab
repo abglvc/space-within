@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1786585294290182176}
   - component: {fileID: 1786585294290182191}
   - component: {fileID: 1786585294290182178}
-  - component: {fileID: 1786585294290182179}
   - component: {fileID: 1786585294290182181}
   m_Layer: 0
   m_Name: Pickup3
@@ -48,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OBSTACLE_INDEX: 13
-  healValue: 2
+  onPickupSound: {fileID: 8300000, guid: b89314c63278192448bfe7652be00272, type: 3}
+  healValue: 1
 --- !u!212 &1786585294290182178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,25 +99,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1786585294290182179
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786585294290182177}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &1786585294290182181
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +114,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!1001 &2293599749874528392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,11 +232,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3382204132640109035, guid: e6659e662bf869543bf8b0dee5df8e12,
-        type: 3}
-      propertyPath: m_Name
-      value: Health
-      objectReference: {fileID: 0}
     - target: {fileID: 3204776116905830331, guid: e6659e662bf869543bf8b0dee5df8e12,
         type: 3}
       propertyPath: m_Text
@@ -278,16 +254,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.6745283
       objectReference: {fileID: 0}
-    - target: {fileID: 7057363531640217872, guid: e6659e662bf869543bf8b0dee5df8e12,
-        type: 3}
-      propertyPath: m_Name
-      value: +Hp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4472473232551777619, guid: e6659e662bf869543bf8b0dee5df8e12,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6077334964456195986, guid: e6659e662bf869543bf8b0dee5df8e12,
         type: 3}
       propertyPath: m_Text
@@ -307,6 +273,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.6745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 4472473232551777619, guid: e6659e662bf869543bf8b0dee5df8e12,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057363531640217872, guid: e6659e662bf869543bf8b0dee5df8e12,
+        type: 3}
+      propertyPath: m_Name
+      value: +Hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382204132640109035, guid: e6659e662bf869543bf8b0dee5df8e12,
+        type: 3}
+      propertyPath: m_Name
+      value: Health
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6659e662bf869543bf8b0dee5df8e12, type: 3}

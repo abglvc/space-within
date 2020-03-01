@@ -23,6 +23,4 @@ public class RotaSpikes : Obstahurt {
     void Update() {
         rotatingPart.Rotate (0,0,rotationSpeed*Time.deltaTime);
     }
-    
-    
 }

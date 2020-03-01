@@ -2411,6 +2411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16bc4241d0551a4f8dd70bd01693e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loopMusicTrack: {fileID: 0}
 --- !u!82 &646832001
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2423,13 +2424,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7d1ff4db2de75bb42a34fe9ff26e30b7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 180
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3269,7 +3270,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1760283491}
-        m_MethodName: OnStartButtonPressed
+        m_MethodName: OnFreerunButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

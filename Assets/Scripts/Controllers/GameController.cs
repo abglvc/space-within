@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class GameController : MonoBehaviour {
     public static GameController sng { get; private set; } //singletone
-
+    
     public String gameName = "Level";
+    public AudioClip musicTrack;
     public int thisPlanet;
     public GameObject consingletonePrefab;
     public Transform obstaclePackHeap;
@@ -20,6 +21,8 @@ public abstract class GameController : MonoBehaviour {
     private bool endReached = false;
     private bool flipWalls = true;
     private bool previousEvenNumberPlatform = false;
+    private float visionDistance;
+    private SpriteRenderer backgroundImage;
 
     private void Awake() {
         if (sng == null) sng = this;
@@ -27,37 +30,48 @@ public abstract class GameController : MonoBehaviour {
             Destroy(sng);
             sng = this;
         }
-
         Initialize();
     }
 
     private void OnDisable() {
         dao.Save();
     }
+    
+    private void OnApplicationPause(bool p){
+        if(p) dao.Save();
+    }
 
     void Update() {
         distanceTraveled = player.DistanceTraveled();
-        if (!endReached && distanceTraveled + 15f > nextObstacleX) SpawnObstaclePack();
+        if (!endReached && distanceTraveled + visionDistance > nextObstacleX) SpawnObstaclePack();
     }
 
     private void Initialize() {
+        visionDistance = 15f / (16f / 9) * (Camera.main.aspect);
+
         dao = new DAO();
         if (Consingletone.sng == null) {
             consingletone = Instantiate(consingletonePrefab, Vector3.zero, new Quaternion());
             DontDestroyOnLoad(consingletone);
         }
-
-        Camera.main.GetComponent<CameraController>()
+        
+        backgroundImage = Camera.main.GetComponent<CameraController>()
             .AdjustBackgroundImage(Consingletone.sng.planetsSkins[thisPlanet - 1].planetBackground);
+        
         player = Player.sng;
-
         player.previousDistance = 0;
         player.transform.position = new Vector3(3f, 0, 0);
+        
         TrailRenderer[] trailRenderers = player.GetComponentsInChildren<TrailRenderer>();
         for (int i = 0; i < trailRenderers.Length; i++)
             trailRenderers[i].GetComponentInChildren<TrailRenderer>().Clear();
-        Camera.main.transform.position = new Vector3(10, 0, -10);
-        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = -6;
+
+        int loadedScene = dao.data.loadedScene;
+        if (loadedScene > 3)
+            UserInterface.sng.mode.text = "LEVEL " + (loadedScene-3);
+        else UserInterface.sng.mode.text = "FREERUN";
+        String[] planets = new[] {"NEPTUNE", "URANUS", "NEBULA"};
+        //akfasfasl
     }
 
     private void SpawnObstaclePack() {
@@ -77,6 +91,7 @@ public abstract class GameController : MonoBehaviour {
             ObstaclePack obstaclePack =
                 obstaclePacksPool[thisObstPack].GetOrSpawnIn(obstaclePackHeap);
             if (obstaclePack) {
+                if (backgroundImage.sortingOrder != -6) backgroundImage.sortingOrder = -6;
                 if(this is LevelGC) ((LevelGC)this).ConfirmObstPackSpawn();
                 currentObstPack = thisObstPack;
                 obstaclePack.Spawn(nextObstacleX, Difficulty(), flipWalls);
@@ -94,4 +109,8 @@ public abstract class GameController : MonoBehaviour {
     public abstract int CalculateStars();
     
     public abstract void EndGame();
+
+    public DAO Dao => dao;
+
+    public SpriteRenderer BackgroundImage => backgroundImage;
 }

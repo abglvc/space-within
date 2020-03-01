@@ -4,7 +4,7 @@ using UnityEngine;
 public class Portal : Obstacle {
     [Header("Portal")]
     public Transform destination;
-    const float TRAVEL_TIME=0.5f;
+    const float TRAVEL_TIME=0.8f;
 
     public void SetStatesOnSpawn(Transform transformInfo, Portal bluePrint) {
         Vector3 destinationPosition = bluePrint.destination.localPosition;

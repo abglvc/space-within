@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Enemy : Obstahurt {
     [Header("Enemy")] public float speed;
 
@@ -45,7 +46,7 @@ public class Enemy : Obstahurt {
             goToPosition = spawnPosition + currentPP.Value;
             rb.velocity = Vector2.zero;
         }
-        else rb.AddForce((goToPosition-transform.position)*speed);
+        else rb.AddForce((goToPosition-transform.position).normalized*speed);
     }
     
     protected void LookAt(Vector3 target) {
@@ -55,17 +56,21 @@ public class Enemy : Obstahurt {
     }
 
     public void SetStatesOnSpawn(Enemy bluePrint, float difficulty) {
-        spawnPosition = transform.position;
-        goToPosition = spawnPosition;
         motionType = bluePrint.motionType;
         speed = bluePrint.speed * (1f + difficulty);
-        movementPathPoints = bluePrint.MovementPathPoints;
-        currentPP = movementPathPoints.First;
+        SetMovementPathPoints(bluePrint.MovementPathPoints);
         base.SetStatesOnSpawn(bluePrint, difficulty);
     }
 
     protected new void Initialize() {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void SetMovementPathPoints(LinkedList<Vector3> movementPP) {
+        spawnPosition = transform.position;
+        goToPosition = spawnPosition;
+        movementPathPoints = movementPP;
+        currentPP = movementPathPoints.First;
     }
 
     public LinkedList<Vector3> MovementPathPoints {

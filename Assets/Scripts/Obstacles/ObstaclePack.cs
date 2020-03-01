@@ -98,7 +98,7 @@ public class ObstaclePack : MonoBehaviour {
             planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet-1];
         }
         transform.position = new Vector3(nextObstacleX + width / 2, 0, 0);
-        this.difficulty = difficulty;
+        this.difficulty = difficulty/2f; //0<difficulty<0.5f
         this.flipWalls = flipWalls;
         ActiveObstaclePack = true;
     }
@@ -125,7 +125,7 @@ public class ObstaclePack : MonoBehaviour {
             opi.transf = child.transform;
             opi.bluePrint = child.GetComponentInChildren<Obstacle>();
             obstacleInfo.Add(opi);
-            child.GetChild(0).gameObject.SetActive(false); //(krijem ih i nosim njihov info) ih jer su mi potrebni samo da preuzmem info, a postoje in a first place radi vizualizacije paketa
+            child.gameObject.SetActive(false); //(krijem ih i nosim njihov info) ih jer su mi potrebni samo da preuzmem info, a postoje in a first place radi vizualizacije paketa
         }
         
         attachedObstacles=new List<Obstacle>(new Obstacle[obstacleInfo.Count]);

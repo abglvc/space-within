@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour {
     public static UserInterface sng { get; private set; } //singletone
+    public Text mode, planet;
+    
     public Text scoreText, bonusText;
     public GameObject endScreen, pauseScreen;
     public Image frameSplash;
@@ -14,7 +16,6 @@ public class UserInterface : MonoBehaviour {
     public Image[] sensors;
     public Color sensorOnColor;
     public Color sensorOffColor;
-
 
     [Header("End Screen")] 
     public Text gameNameText1;
@@ -25,7 +26,12 @@ public class UserInterface : MonoBehaviour {
     public Text endScoreText;
     public GameObject[] stars;
     public GameObject congratsText;
-
+    public GameObject nextLevelMain;
+    public GameObject freerunMain;
+    
+    private DataStorage data;
+    private AudioManager audioManager;
+    
     private void Awake() {
         if (sng == null) sng = this;
         else {
@@ -45,33 +51,34 @@ public class UserInterface : MonoBehaviour {
     }
 
     public void ButtonPauseClicked() {
-        AudioManager.s_inst.Play2DSound(0);
+        audioManager.Play2DSound(0);
         pauseScreen.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void ButtonResumeClicked() {
-        AudioManager.s_inst.Play2DSound(0);
+        audioManager.Play2DSound(0);
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void ButtonRestartClicked() {
-        AudioManager.s_inst.Play2DSound(0);
-        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
+        audioManager.Play2DSound(0);
+        GameController.sng.BackgroundImage.sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(data.loadedScene);
     }
     
     public void ButtonMainMenuClicked() {
-        AudioManager.s_inst.Play2DSound(0);
-        Camera.main.GetComponentInChildren<SpriteRenderer>().sortingOrder = 6;
+        audioManager.Play2DSound(0);
+        GameController.sng.BackgroundImage.sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
     public void ButtonQuitClicked() {
+        audioManager.Play2DSound(0);
         AudioManager.s_inst.Play2DSound(0);
         F1SLink.sng.QuitGameSession();
     }
@@ -81,6 +88,12 @@ public class UserInterface : MonoBehaviour {
     }
 
     private void Initialize() {
+        data = GameController.sng.Dao.data;
+        audioManager = AudioManager.s_inst;
+        
+        audioManager.PlaySounds = data.playSounds;
+        audioManager.PlayMusic = data.playMusic;
+
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Time.timeScale = 1f;
         InitialiseSensorVisuals();
@@ -105,24 +118,30 @@ public class UserInterface : MonoBehaviour {
         for (int i = 0; i < nStars; i++) {
             yield return new WaitForSeconds(1f);
             stars[i].SetActive(false);
+            audioManager.Play2DSound(1);
         }
     }
 
     public void ShowDeathScreen(String gameName, int highScore, int state, int nStars, bool showCongratulation) {
         Debug.Log(String.Format("gamename: {0}, highscore: {1}, state: {2}, stars: {3}, congrats: {4} ", gameName, highScore, state,nStars,showCongratulation));
+        audioManager.MusicSource.Stop();
+        audioManager.Play2DSound(showCongratulation ? 2 : 3);
+        
         gameNameText1.text = gameName; gameNameText2.text = gameName;
         stateImage.sprite = stateSprites[state];
         highScoreText.text = highScore.ToString();
         congratsText.SetActive(showCongratulation);
         endScoreText.text = scoreText.text;
+
         StartCoroutine(ShowStars(nStars));
+        if (data.loadedScene == 1) freerunMain.SetActive(true);
+        else if(data.PlayNextLevel(data.loadedScene - 4)) nextLevelMain.SetActive(true);
         endScreen.SetActive(true);
     }
 
     public void SignalDanger(float yWorldPosition) {
         RectTransform s = Instantiate(cautionGraphics, transform);
         s.anchoredPosition = new Vector2(0f, yWorldPosition/5f * 360);
-        //s.rect.Set(0, yWorldPosition/5f * 360, 100, 100 );
         Destroy(s.gameObject,2f);
     }
 }

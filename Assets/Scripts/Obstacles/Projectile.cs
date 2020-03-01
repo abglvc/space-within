@@ -5,6 +5,7 @@ public class Projectile : Obstahurt {
     [Header("Projectile")]
     public float speed;
     public Vector3 moveDirection;
+    public bool timeDestroy = true;
     public float timeAlive;
 
     public int rotationSpeed;
@@ -44,8 +45,11 @@ public class Projectile : Obstahurt {
         speed = bluePrint.speed * (1f + difficulty);
         rb.velocity = moveDirection * (initialSpeed + speed);
         timeAlive = bluePrint.timeAlive;
+        timeDestroy = bluePrint.timeDestroy;
         if(tr) tr.Clear();
-        StartCoroutine(Destruct());
+        if(timeDestroy) StartCoroutine(Destruct());
         base.SetStatesOnSpawn(bluePrint, difficulty, newPowerDamage);
     }
+
+    public Rigidbody2D Rb => rb;
 }

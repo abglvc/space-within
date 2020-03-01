@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameName: Freerun
+  musicTrack: {fileID: 8300000, guid: b8e0517866c84a047a003ce4761ecb26, type: 3}
   thisPlanet: 1
   consingletonePrefab: {fileID: 850881380824924321, guid: 450f3466005ce214fa5be8ded0790585,
     type: 3}
@@ -177,7 +178,6 @@ MonoBehaviour:
   - objectPrefab: {fileID: 5147105693607845496, guid: dd7cdcfe2d14a3b469da4b27b861e28b,
       type: 3}
     maxObjects: 2
-  backgroundSr: {fileID: 2020051940}
   distanceUntilNextPlanet: 300
   nextPlanet: 2
 --- !u!4 &161130873
@@ -407,7 +407,7 @@ MonoBehaviour:
   bgSpriteRenderer: {fileID: 2020051940}
   rightCameraOffset: 6
   speed: 4
-  xMin: 10
+  xMin: 11
 --- !u!4 &1730447240
 Transform:
   m_ObjectHideFlags: 0

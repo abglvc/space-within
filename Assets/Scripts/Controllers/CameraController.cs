@@ -7,12 +7,7 @@ public class CameraController : MonoBehaviour {
     public float rightCameraOffset;
     public float speed;
     public float xMin;
-    public static float aspectMultiplier;
-
-    void Awake() {
-        aspectMultiplier = GetComponent<Camera>().aspect / (16f / 9);
-    }
-
+    
     void Start() {
         target = Player.sng.transform;
         if (target)
@@ -28,7 +23,8 @@ public class CameraController : MonoBehaviour {
         }
     }
 
-    public void AdjustBackgroundImage(Sprite bgSprite) {
+    public SpriteRenderer AdjustBackgroundImage(Sprite bgSprite) {
+        bgSpriteRenderer.sortingOrder = 6;
         bgSpriteRenderer.sprite = bgSprite;
         //BACGROUND IMAGE SET
         float cameraHeight = Camera.main.orthographicSize * 2;
@@ -44,6 +40,7 @@ public class CameraController : MonoBehaviour {
         
         //bgSpriteRenderer.transform.position = Vector2.zero; // Optional
         bgSpriteRenderer.transform.localScale = scale;
+        return bgSpriteRenderer;
     }
     
     public Transform Target {

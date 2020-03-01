@@ -44,8 +44,9 @@ public class MainMenu : MonoBehaviour {
             levels[i].sprite = levelStates[dao.data.levelStates[i]];
     }
 
-    public void OnStartButtonPressed() {
+    public void OnFreerunButtonPressed() {
         audioManager.Play2DSound(0);
+        dao.data.loadedScene = 1;
         SceneManager.LoadScene(1);
     }
 
@@ -75,17 +76,20 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OnInfoButtonPressed() {
+        audioManager.Play2DSound(0);
         Debug.Log("Info pressed !");
     }
 
     public void OnLevelSelected(int level) {
+        audioManager.Play2DSound(0);
         if (dao.data.levelStates[level] > 0) {
-            SceneManager.LoadScene(level+4);
-            //Debug.Log("Load level "+level.ToString());
+            dao.data.loadedScene = level + 4;
+            SceneManager.LoadScene(level + 4);
         }
     }
 
     public void MoveToPanel(int panel) {
+        audioManager.Play2DSound(0);
         panels[currentPanel].SetActive(false);
         currentPanel = panel;
         panels[currentPanel].SetActive(true);

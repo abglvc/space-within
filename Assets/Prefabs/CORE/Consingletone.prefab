@@ -28,9 +28,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7009735190200099188}
   - {fileID: 1219895212378442827}
   - {fileID: 8280213719788759759}
-  - {fileID: 7009735190200099188}
   - {fileID: 6620205325102843382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -132,6 +132,9 @@ MonoBehaviour:
   - objectPrefab: {fileID: 7185591624559172455, guid: 508888d391ce04640965c55023c21831,
       type: 3}
     maxObjects: 2
+  - objectPrefab: {fileID: 7801465674930614636, guid: 0080d13687c89384ab1752b5b8c85500,
+      type: 3}
+    maxObjects: 3
   planetsSkins:
   - sprites:
     - {fileID: 21300000, guid: dd0126bab2c05d949bc0cbf1af49b9de, type: 3}
@@ -279,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 5886587614818918955, guid: 30706386c2bec2f4fb7ead47ce3fbfbc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5886587614818918955, guid: 30706386c2bec2f4fb7ead47ce3fbfbc,
         type: 3}
@@ -384,7 +387,7 @@ PrefabInstance:
     - target: {fileID: 2720554641391606302, guid: bb879e8b93a77df42b637093fb85254c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2720554641391606302, guid: bb879e8b93a77df42b637093fb85254c,
         type: 3}
@@ -459,7 +462,7 @@ PrefabInstance:
     - target: {fileID: 4412830167126977564, guid: cb2cceb080e852e47a22fdaa239c9072,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4412830167126977564, guid: cb2cceb080e852e47a22fdaa239c9072,
         type: 3}
