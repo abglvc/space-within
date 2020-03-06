@@ -65,5 +65,6 @@ public class Enemyhurt : Enemy {
         enemyId = GetInstanceID();
         GetComponent<CircleCollider2D>().radius = attackRange;
         projAudioSrc = GetComponents<AudioSource>()[1];
+        if(AudioManager.sng) projAudioSrc.mute = !AudioManager.sng.PlaySounds;
     }
 }

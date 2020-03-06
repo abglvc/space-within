@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - EndPortal
   - StartPack
+  - ManualsOP
   layers:
   - Default
   - TransparentFX

@@ -113,25 +113,38 @@ public class Player : MonoBehaviour {
              case "StartPack":
                  Destroy(other.gameObject);
                  break;
+             case "ManualsOP":
+                 other.gameObject.SetActive(false);
+                 break;
          }
     }
 
     public void Initialize() {
-        audioManager = AudioManager.s_inst;
+        audioManager = AudioManager.sng;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
         health = maxHealth;
         rb.gravityScale = verticalSpeed;
         rb.velocity = Vector2.right * horizontalSpeed;
-        healthSlider.maxValue = Health;
-        UpdateHealthUi();
+        
+        if (healthSlider) {
+            healthSlider.maxValue = Health;
+            UpdateHealthUi();
+        }
         playerId = GetInstanceID();
-
-        AudioSource[] x = GetComponents<AudioSource>();
-        projAudioSrc = x[0];
-        impactAudioSrc = x[1];
-        pickupAudioSource = x[2];
+        
+        if (audioManager) {
+            AudioSource[] x = GetComponents<AudioSource>();
+            projAudioSrc = x[0];
+            impactAudioSrc = x[1];
+            pickupAudioSource = x[2];
+            
+            projAudioSrc.mute = !audioManager.PlaySounds;
+            impactAudioSrc.mute = !audioManager.PlaySounds;
+            pickupAudioSource.mute = !audioManager.PlaySounds;
+            postDestructPrefab.GetComponent<AudioSource>().mute = !GameController.sng.Dao.data.playSounds;
+        }
 
         for (int i = 0; i < projectileBluePrints.Length; i++)
             projectileBluePrints[i] = projectiles[i].objectPrefab as Projectile;
@@ -208,10 +221,12 @@ public class Player : MonoBehaviour {
     public void UpdateDepth(int depth) {
         OnGravityDirectionChange((int) Mathf.Sign(previousDepth-depth));
         UserInterface ui=UserInterface.sng;
-        for(int i=Mathf.Min(previousDepth, depth); i<Mathf.Max(previousDepth, depth); i++)
-            if (previousDepth <= depth)
-                ui.EnableDepthSensor(i, true);
-            else ui.EnableDepthSensor(i, false);
+        if (ui) {
+            for(int i=Mathf.Min(previousDepth, depth); i<Mathf.Max(previousDepth, depth); i++)
+                if (previousDepth <= depth)
+                    ui.EnableDepthSensor(i, true);
+                else ui.EnableDepthSensor(i, false);
+        }
         previousDepth = depth;
     }
 
@@ -330,7 +345,8 @@ public class Player : MonoBehaviour {
         get => score;
         set {
             score = value;
-            UserInterface.sng.UpdateScore(score);
+            UserInterface ui = UserInterface.sng;
+            if(ui) ui.UpdateScore(score);
         }
     }
 

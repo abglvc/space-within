@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/main_menu.unity
+    path: Assets/Scenes/main.unity
     guid: a0b478ffc17e0f14da4b67a175dd3472
   - enabled: 1
     path: Assets/Scenes/Freerun/blue_planet.unity
@@ -18,8 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Freerun/purple_planet.unity
     guid: 367948633f9e97940863010bc10e9fb1
   - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
+    path: Assets/Scenes/Level/level.unity
     guid: 440fad9d94a6c2c40869b529599e7378
+  - enabled: 1
+    path: Assets/Scenes/manuals.unity
+    guid: b46c7c642e1928a4ca5586cbda99e21b
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6fb0997e686131541840a9aa18276e18,
       type: 2}

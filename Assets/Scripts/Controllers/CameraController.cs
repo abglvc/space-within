@@ -9,6 +9,11 @@ public class CameraController : MonoBehaviour {
     public float xMin;
     
     void Start() {
+        if (bgSpriteRenderer) {
+            AdjustBackgroundImage(bgSpriteRenderer.sprite);
+            bgSpriteRenderer.sortingOrder = -6;
+        }
+
         target = Player.sng.transform;
         if (target)
             transform.position = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset), transform.position.y,

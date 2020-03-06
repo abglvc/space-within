@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour {
     private AudioManager audioManager;
 
     private void Start() {
+        Time.timeScale = 1f;
         Initialize();
     }
 
@@ -29,7 +30,7 @@ public class MainMenu : MonoBehaviour {
 
     private void Initialize() {
         dao = new DAO();
-        audioManager = AudioManager.s_inst;
+        audioManager = AudioManager.sng;
         audioManager.PlaySounds = dao.data.playSounds;
         audioManager.PlayMusic = dao.data.playMusic;
         
@@ -46,8 +47,10 @@ public class MainMenu : MonoBehaviour {
 
     public void OnFreerunButtonPressed() {
         audioManager.Play2DSound(0);
-        dao.data.loadedScene = 1;
-        SceneManager.LoadScene(1);
+        dao.data.isLevel = false;
+        dao.data.fullFreerunCycle = false;
+        if (dao.data.helpTutorial) SceneManager.LoadScene(5);
+        else SceneManager.LoadScene(1);
     }
 
     public void OnQuitButtonPressed() {
@@ -63,10 +66,10 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OnSoundButtonPressed() {
-        audioManager.Play2DSound(0);
         dao.data.playSounds = !dao.data.playSounds;
         audioManager.PlaySounds = dao.data.playSounds;
         soundImage.color = dao.data.playSounds ? buttonOnColor : buttonOffColor;
+        audioManager.Play2DSound(0);
     }
     
     public void OnHelpButtonPressed() {
@@ -83,8 +86,11 @@ public class MainMenu : MonoBehaviour {
     public void OnLevelSelected(int level) {
         audioManager.Play2DSound(0);
         if (dao.data.levelStates[level] > 0) {
-            dao.data.loadedScene = level + 4;
-            SceneManager.LoadScene(level + 4);
+            dao.data.isLevel = true;
+            dao.data.loadedLevel = new DataStorage.LoadedLevel(level, level/5 + 1);
+            if (dao.data.helpTutorial)
+                SceneManager.LoadScene(5);
+            else SceneManager.LoadScene(4);
         }
     }
 

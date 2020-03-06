@@ -11,7 +11,9 @@ public class DataStorage{
     public int freerunState = 1;
     public List<int> levelStates = new List<int>(15);
     public HighScores highScores = new HighScores();
-    public int loadedScene;
+    public bool isLevel;
+    public LoadedLevel loadedLevel;
+    public bool fullFreerunCycle = false;
     
     public DataStorage() {
         for(int i=0; i<levelStates.Capacity; i++)
@@ -21,12 +23,12 @@ public class DataStorage{
 
     public void SetLevelState(int level, int state) {
         levelStates[level] = state;
-        if (state > 1 && level+1 < levelStates.Count && levelStates[level+1] == 0)
+        if (state > 2 && level+1 < levelStates.Count && levelStates[level+1] == 0)
             levelStates[level+1] = 1; //unlock next level
     }
 
     public bool PlayNextLevel(int currentLevel) {
-        return currentLevel + 1 < levelStates.Count && levelStates[currentLevel] > 1;
+        return currentLevel + 1 < levelStates.Count && levelStates[currentLevel] > 2;
     }
 
     public int UnlockedLevels {
@@ -46,6 +48,17 @@ public class DataStorage{
         public HighScores() {
             for (int i = 0; i < levels.Capacity; i++) 
                 levels.Add(0);
+        }
+    }
+    
+    [Serializable]
+    public class LoadedLevel {
+        public int level;
+        public int planet;
+
+        public LoadedLevel(int level, int planet) {
+            this.level = level;
+            this.planet = planet;
         }
     }
 }

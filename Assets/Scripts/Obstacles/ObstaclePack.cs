@@ -93,12 +93,15 @@ public class ObstaclePack : MonoBehaviour {
     //flip top/bot walls
     private bool flipWalls;
     public void Spawn(float nextObstacleX, float difficulty, bool flipWalls) {
-        if (spawnedOnPlanet != GameController.sng.thisPlanet) {
-            spawnedOnPlanet = GameController.sng.thisPlanet;
-            planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet-1];
+        GameController gc = GameController.sng;
+        if (gc) {
+            if (spawnedOnPlanet != gc.thisPlanet) {
+                spawnedOnPlanet = gc.thisPlanet;
+                planetSprites = Consingletone.sng.planetsSkins[spawnedOnPlanet-1];
+            }
         }
         transform.position = new Vector3(nextObstacleX + width / 2, 0, 0);
-        this.difficulty = difficulty/2f; //0<difficulty<0.5f
+        this.difficulty = difficulty;
         this.flipWalls = flipWalls;
         ActiveObstaclePack = true;
     }

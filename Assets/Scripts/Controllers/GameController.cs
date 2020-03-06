@@ -6,7 +6,6 @@ public abstract class GameController : MonoBehaviour {
     public static GameController sng { get; private set; } //singletone
     
     public String gameName = "Level";
-    public AudioClip musicTrack;
     public int thisPlanet;
     public GameObject consingletonePrefab;
     public Transform obstaclePackHeap;
@@ -24,7 +23,7 @@ public abstract class GameController : MonoBehaviour {
     private float visionDistance;
     private SpriteRenderer backgroundImage;
 
-    private void Awake() {
+    protected void Awake() {
         if (sng == null) sng = this;
         else {
             Destroy(sng);
@@ -46,7 +45,7 @@ public abstract class GameController : MonoBehaviour {
         if (!endReached && distanceTraveled + visionDistance > nextObstacleX) SpawnObstaclePack();
     }
 
-    private void Initialize() {
+    protected void Initialize() {
         visionDistance = 15f / (16f / 9) * (Camera.main.aspect);
 
         dao = new DAO();
@@ -54,9 +53,13 @@ public abstract class GameController : MonoBehaviour {
             consingletone = Instantiate(consingletonePrefab, Vector3.zero, new Quaternion());
             DontDestroyOnLoad(consingletone);
         }
-        
+
+        if(dao.data.isLevel) thisPlanet = dao.data.loadedLevel.planet;
+        StartCoroutine(UserInterface.sng.StartModeInfo(dao.data.isLevel ? "LEVEL " + (dao.data.loadedLevel.level + 1) : "FREERUN",
+            new[] {"URANUS", "NEPTUNE", "NEBULA"}[thisPlanet - 1]));
+
         backgroundImage = Camera.main.GetComponent<CameraController>()
-            .AdjustBackgroundImage(Consingletone.sng.planetsSkins[thisPlanet - 1].planetBackground);
+            .AdjustBackgroundImage(Consingletone.sng.planetsSkins[thisPlanet-1].planetBackground);
         
         player = Player.sng;
         player.previousDistance = 0;
@@ -65,13 +68,6 @@ public abstract class GameController : MonoBehaviour {
         TrailRenderer[] trailRenderers = player.GetComponentsInChildren<TrailRenderer>();
         for (int i = 0; i < trailRenderers.Length; i++)
             trailRenderers[i].GetComponentInChildren<TrailRenderer>().Clear();
-
-        int loadedScene = dao.data.loadedScene;
-        if (loadedScene > 3)
-            UserInterface.sng.mode.text = "LEVEL " + (loadedScene-3);
-        else UserInterface.sng.mode.text = "FREERUN";
-        String[] planets = new[] {"NEPTUNE", "URANUS", "NEBULA"};
-        //akfasfasl
     }
 
     private void SpawnObstaclePack() {

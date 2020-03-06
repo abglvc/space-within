@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-    public static AudioManager s_inst{get; private set;}
+    public static AudioManager sng{get; private set;}
     private bool playSounds, playMusic;
     
     private AudioSource[] soundSources;
@@ -10,10 +10,10 @@ public class AudioManager : MonoBehaviour {
     public AudioClip loopMusicTrack;
 
     void Awake(){
-        if(s_inst==null) s_inst=this;
+        if(sng==null) sng=this;
         else{
-            Destroy(s_inst);
-            s_inst = this;
+            Destroy(sng);
+            sng = this;
         }
         Initialize();
     }
@@ -21,13 +21,12 @@ public class AudioManager : MonoBehaviour {
     private void Initialize() {
         soundSources = GetComponents<AudioSource>();
         musicSource = soundSources[soundSources.Length - 1];
+    }
 
-        GameController gc = GameController.sng;
-        if (gc) {
-            loopMusicTrack = gc.musicTrack;
-            musicSource.clip = loopMusicTrack;
-            musicSource.Play();
-        }
+    public void PlayLoopMusicTrack(AudioClip music) {
+        loopMusicTrack = music;
+        musicSource.clip = loopMusicTrack;
+        musicSource.Play();
     }
 
     public void Play2DSound(int sound){

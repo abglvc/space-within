@@ -28,7 +28,7 @@ public class PlanetSprites {
     public Sprite[] sprites;
     public Sprite planetBackground;
     private Dictionary<int, int> idToIndex = new Dictionary<int, int> {
-        {7, 0}, {1, 1}, {-1, 2}, {3, 3}, {0, 4}, {15, 5}, {14, 4}
+        {7, 0}, {1, 1}, {28, 2}, {3, 3}, {0, 4}, {15, 5}, {14, 4}
     };
 
     public Sprite GetSkin(int obsID) {

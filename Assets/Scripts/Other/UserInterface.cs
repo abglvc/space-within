@@ -66,7 +66,9 @@ public class UserInterface : MonoBehaviour {
         audioManager.Play2DSound(0);
         GameController.sng.BackgroundImage.sortingOrder = 6;
         Destroy(Consingletone.sng.gameObject);
-        SceneManager.LoadScene(data.loadedScene);
+        data.fullFreerunCycle = false;
+        if (data.isLevel) SceneManager.LoadScene(4);
+        else SceneManager.LoadScene(1);
     }
     
     public void ButtonMainMenuClicked() {
@@ -79,8 +81,15 @@ public class UserInterface : MonoBehaviour {
 
     public void ButtonQuitClicked() {
         audioManager.Play2DSound(0);
-        AudioManager.s_inst.Play2DSound(0);
+        AudioManager.sng.Play2DSound(0);
         F1SLink.sng.QuitGameSession();
+    }
+
+    public void ButtonNextLevelClicked() {
+        data.loadedLevel.level += 1;
+        data.loadedLevel.planet = data.loadedLevel.level / 5 + 1;
+        Destroy(Consingletone.sng.gameObject);
+        SceneManager.LoadScene(4);
     }
 
     public void EnableDepthSensor(int i, bool b) {
@@ -89,8 +98,8 @@ public class UserInterface : MonoBehaviour {
 
     private void Initialize() {
         data = GameController.sng.Dao.data;
-        audioManager = AudioManager.s_inst;
-        
+        audioManager = AudioManager.sng;
+
         audioManager.PlaySounds = data.playSounds;
         audioManager.PlayMusic = data.playMusic;
 
@@ -122,8 +131,16 @@ public class UserInterface : MonoBehaviour {
         }
     }
 
+    public IEnumerator StartModeInfo(String mode, String planet) {
+        this.mode.text = mode;
+        this.planet.text = planet;
+        this.mode.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        this.mode.gameObject.SetActive(false);
+    }
+
     public void ShowDeathScreen(String gameName, int highScore, int state, int nStars, bool showCongratulation) {
-        Debug.Log(String.Format("gamename: {0}, highscore: {1}, state: {2}, stars: {3}, congrats: {4} ", gameName, highScore, state,nStars,showCongratulation));
+        //Debug.Log(String.Format("gamename: {0}, highscore: {1}, state: {2}, stars: {3}, congrats: {4} ", gameName, highScore, state,nStars,showCongratulation));
         audioManager.MusicSource.Stop();
         audioManager.Play2DSound(showCongratulation ? 2 : 3);
         
@@ -134,8 +151,9 @@ public class UserInterface : MonoBehaviour {
         endScoreText.text = scoreText.text;
 
         StartCoroutine(ShowStars(nStars));
-        if (data.loadedScene == 1) freerunMain.SetActive(true);
-        else if(data.PlayNextLevel(data.loadedScene - 4)) nextLevelMain.SetActive(true);
+        if (!data.isLevel) freerunMain.SetActive(true);
+        else if(data.PlayNextLevel(data.loadedLevel.level)) nextLevelMain.SetActive(true);
+        else freerunMain.SetActive(true);
         endScreen.SetActive(true);
     }
 

@@ -47,6 +47,8 @@ public class DestructableObstacle : Obstacle {
 
     protected void Initialize() {
         impactAudioSrc = GetComponent<AudioSource>();
+        if(impactAudioSrc && AudioManager.sng) impactAudioSrc.mute = !AudioManager.sng.PlaySounds;
+        
         sr = GetComponent<SpriteRenderer>();
         if(sr) realColor = sr.color;
         if(!UICanvas) UICanvas = GetComponentInChildren<Canvas>();

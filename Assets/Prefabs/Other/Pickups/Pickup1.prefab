@@ -50,7 +50,7 @@ MonoBehaviour:
   onPickupSound: {fileID: 8300000, guid: affc8361f5a964149863ed99c2aa5668, type: 3}
   projectile: 0
   effectTime: 7
-  onPickMusic: {fileID: 8300000, guid: 9304b00b6956fe94c9f9e38562cb51e3, type: 3}
+  onPickMusic: {fileID: 8300000, guid: d124abdb35101ec4f8448a6d46830fef, type: 3}
 --- !u!212 &5026835734824516058
 SpriteRenderer:
   m_ObjectHideFlags: 0

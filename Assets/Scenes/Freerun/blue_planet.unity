@@ -151,34 +151,148 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameName: Freerun
-  musicTrack: {fileID: 8300000, guid: b8e0517866c84a047a003ce4761ecb26, type: 3}
   thisPlanet: 1
   consingletonePrefab: {fileID: 850881380824924321, guid: 450f3466005ce214fa5be8ded0790585,
     type: 3}
   obstaclePackHeap: {fileID: 1898532671}
   obstaclePacksPool:
-  - objectPrefab: {fileID: 4405775252332942866, guid: 6b8ff4cc24bae6f4c80192f42e7bda44,
+  - objectPrefab: {fileID: 6860572187561608851, guid: ea3ffe9df0f71cd4eb2a842de5953e06,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 2461906014259054633, guid: 4dcebde314fe288428dadc3628f2679e,
+    maxObjects: 100
+  - objectPrefab: {fileID: 4021453955169651895, guid: 765afdfd9bc6aba4ca60aeb93773b614,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 5616255236730331146, guid: 7b3e07b9c2fe6cf40a08c3a08c07399c,
+    maxObjects: 100
+  - objectPrefab: {fileID: 8865398241639097716, guid: 5c2645c716e058242b1d93acd30130a5,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 7579884451784005896, guid: 961c79ed17a3f094da7ddb71053b3bbb,
+    maxObjects: 100
+  - objectPrefab: {fileID: 1834992764993770843, guid: 4f09735f0b21cba4a99b1e032a353aef,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 4954490427866224220, guid: 14a4be6f7318c524db9764c9638c8341,
+    maxObjects: 100
+  - objectPrefab: {fileID: 8059809964749518490, guid: 0fa76f594ffbddc4f8dd8e852ecc20ff,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 8952671183395102655, guid: 9be2214da25712749a698bf832117f30,
+    maxObjects: 100
+  - objectPrefab: {fileID: 109506125943231530, guid: 81f0e46ddeb77ed45a8e8cb4613d0371,
       type: 3}
-    maxObjects: 2
-  - objectPrefab: {fileID: 5147105693607845496, guid: dd7cdcfe2d14a3b469da4b27b861e28b,
+    maxObjects: 100
+  - objectPrefab: {fileID: 4622744944905327804, guid: 57cf9b4f299a397428b400146a2e0f5b,
       type: 3}
-    maxObjects: 2
-  distanceUntilNextPlanet: 300
+    maxObjects: 100
+  - objectPrefab: {fileID: 3102636305347152837, guid: 5424587c5fe2cd841b9baea2183019b6,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 3444518262067178572, guid: bae6946a5e9ce92419c0d05771bf44bb,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 4738963048337773494, guid: 474753a98f52df543b39a4278ec246d0,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7820826155708156858, guid: 3018b7f73e2697d4cbc8b202fed13136,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7852627245076046810, guid: fb14f659c5551b04b8f3d343bd5a531d,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 1986074710664984662, guid: f239710a9f55fbd4b9abe2511e424ce0,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 1941741822382348317, guid: ad732abf51de04a4986a73c987f54343,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 6185494666526551667, guid: 2b35319fc2a84084fb1a551a5aafcafb,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 4656084547374326087, guid: 53f3d286f45fc9b40b8b7bd2d4b5e043,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7321273986934398914, guid: fe3fa6eb83a0d7d4fb4708b468d00c24,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 4414324778924508659, guid: 1e9a127c435763748b7b30304af762ef,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 1584991655831638885, guid: 09ba3b9d2d2468743ae49e6c3df2d2ea,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 5324040413526903700, guid: 1f54f96952ecc4346ae9a488e320ae4f,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 8254491463002780196, guid: a6e54e750a00ff44d849d1e1bebc0596,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 4371365583573924221, guid: 0bf32b6a742f34e4989a0ebf4963e908,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 481344875845578496, guid: a5f411f893e31fc4e81a887e279c9838,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 2421888771344146938, guid: 7bccdb19ed9a327419dcb7d17c2171ad,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 508719541819819367, guid: cc1b476e8ef2a3341b1bbe0f508611a3,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 3224002961361356505, guid: 21735d359bc539c4b8a2299b5d8d6d07,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 818512984594564098, guid: 4ded987ed8487d54c934888c6393d244,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 1878538755727201505, guid: ad6ce58939a50214da725761ffa33936,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 3409936817545998040, guid: 55fbb47efe28bc64a96196ce6d75e3d3,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 1769637338157697594, guid: dad80b57579b0d44e95d073b0a6412c4,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7572807148215479694, guid: 466ff63346eea0244878363feec80037,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 8058163936472631824, guid: cd6b8cbc2b16ace47bb620b913993421,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 6387531873750439248, guid: 187438c5952a59b40b287ea4b471ee63,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 8129269383487210978, guid: 42a18461f9e8da3449e11651669395b5,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7709788604538927631, guid: 914489d76e88e75488167e13e054ffc9,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 5561591910456642549, guid: c03590fb9621f3144817e8b180532496,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 7083693627978172173, guid: 2f4af638afc20e544874d9762a172086,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 2996069351115238787, guid: 1fa40379fda89b241b10ff68b477b5ad,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 9124146992510200722, guid: fe0c1dedc3602924a8943f12c0420399,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 174025066938923323, guid: ea701eb32b17e3a469896a5f0384de8e,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 8935305429329429666, guid: 398b407793b30d944a09a6ce376cc903,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 93033067580754104, guid: e78042747b542bc48b9b75e97eefe819,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 9172032286720160356, guid: 262f4d81e9c428b49b091b16b0d5c8b4,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 8567083368596494167, guid: 59d9a6aae932a5849a359fafef66e1d6,
+      type: 3}
+    maxObjects: 100
+  - objectPrefab: {fileID: 2418020794609319699, guid: e41f6a458b8080b4fa4874866e17b58a,
+      type: 3}
+    maxObjects: 100
+  musicTrack: {fileID: 8300000, guid: 50b6a87b58b2c9c42a2b1a722f6c26c9, type: 3}
+  distanceUntilNextPlanet: 500
   nextPlanet: 2
 --- !u!4 &161130873
 Transform:
