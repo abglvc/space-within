@@ -1,26 +1,27 @@
 ﻿using UnityEngine;
 
-public class RotaSpikes : Obstahurt {
-    [Header("RotaSpikes")]
-    public int rotationSpeed;
+namespace Obstacles {
+    public class RotaSpikes : Obstahurt {
+        [Header("RotaSpikes")] public int rotationSpeed;
 
-    private Transform rotatingPart;
+        private Transform rotatingPart;
 
-    protected new void Awake() {
-        Initialize();
-        base.Awake();
-    }
-    
-    public void SetStatesOnSpawn(RotaSpikes bluePrint, float difficulty) {
-        rotationSpeed = bluePrint.rotationSpeed;
-        base.SetStatesOnSpawn(bluePrint, difficulty);
-    }
+        protected new void Awake() {
+            Initialize();
+            base.Awake();
+        }
 
-    private new void Initialize() {
-        rotatingPart = transform.GetChild(1);
-    }
+        public void SetStatesOnSpawn(RotaSpikes bluePrint, float difficulty) {
+            rotationSpeed = bluePrint.rotationSpeed;
+            base.SetStatesOnSpawn(bluePrint, difficulty);
+        }
 
-    void Update() {
-        rotatingPart.Rotate (0,0,rotationSpeed*Time.deltaTime);
+        private new void Initialize() {
+            rotatingPart = transform.GetChild(1);
+        }
+
+        void Update() {
+            rotatingPart.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        }
     }
 }

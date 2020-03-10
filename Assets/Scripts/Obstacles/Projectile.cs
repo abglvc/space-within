@@ -1,55 +1,59 @@
 ﻿using System.Collections;
+using Other;
 using UnityEngine;
 
-public class Projectile : Obstahurt {
-    [Header("Projectile")]
-    public float speed;
-    public Vector3 moveDirection;
-    public bool timeDestroy = true;
-    public float timeAlive;
+namespace Obstacles {
+    public class Projectile : Obstahurt {
+        [Header("Projectile")] public float speed;
+        public Vector3 moveDirection;
+        public bool timeDestroy = true;
+        public float timeAlive;
 
-    public int rotationSpeed;
-    public Transform rotatingPart;
+        public int rotationSpeed;
+        public Transform rotatingPart;
 
-    public AudioClip soundEffect;
-    
-    protected Rigidbody2D rb;
-    private TrailRenderer tr;
+        public AudioClip soundEffect;
 
-    protected new void Awake() {
-        Initialize();
-        base.Awake();
-    }
-    
-    void Update() {
-        if(rotationSpeed != 0)
-            rotatingPart.Rotate (0,0,rotationSpeed*Time.deltaTime);
-    }
+        protected Rigidbody2D rb;
+        private TrailRenderer tr;
 
-    private IEnumerator Destruct() {
-        yield return new WaitForSeconds(timeAlive);
-        ActiveObstacle = false;
-    }
-
-    private new void Initialize() {
-        rb = GetComponent<Rigidbody2D>();
-        tr = GetComponentInChildren<TrailRenderer>();
-        if (rotatingPart == null) rotatingPart = transform;
-    }
-    
-    public void SetStatesOnSpawn(Projectile bluePrint, Vector3 dir, float initialSpeed, float difficulty, int newPowerDamage=0, bool dangerSignal=false) {
-        if (dangerSignal) {
-            UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
+        protected new void Awake() {
+            Initialize();
+            base.Awake();
         }
-        moveDirection = dir;
-        speed = bluePrint.speed * (1f + difficulty);
-        rb.velocity = moveDirection * (initialSpeed + speed);
-        timeAlive = bluePrint.timeAlive;
-        timeDestroy = bluePrint.timeDestroy;
-        if(tr) tr.Clear();
-        if(timeDestroy) StartCoroutine(Destruct());
-        base.SetStatesOnSpawn(bluePrint, difficulty, newPowerDamage);
-    }
 
-    public Rigidbody2D Rb => rb;
+        void Update() {
+            if (rotationSpeed != 0)
+                rotatingPart.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        }
+
+        private IEnumerator Destruct() {
+            yield return new WaitForSeconds(timeAlive);
+            ActiveObstacle = false;
+        }
+
+        private new void Initialize() {
+            rb = GetComponent<Rigidbody2D>();
+            tr = GetComponentInChildren<TrailRenderer>();
+            if (rotatingPart == null) rotatingPart = transform;
+        }
+
+        public void SetStatesOnSpawn(Projectile bluePrint, Vector3 dir, float initialSpeed, float difficulty,
+            int newPowerDamage = 0, bool dangerSignal = false) {
+            if (dangerSignal) {
+                UserInterface.sng.SignalDanger(bluePrint.transform.position.y);
+            }
+
+            moveDirection = dir;
+            speed = bluePrint.speed * (1f + difficulty);
+            rb.velocity = moveDirection * (initialSpeed + speed);
+            timeAlive = bluePrint.timeAlive;
+            timeDestroy = bluePrint.timeDestroy;
+            if (tr) tr.Clear();
+            if (timeDestroy) StartCoroutine(Destruct());
+            base.SetStatesOnSpawn(bluePrint, difficulty, newPowerDamage);
+        }
+
+        public Rigidbody2D Rb => rb;
+    }
 }

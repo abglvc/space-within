@@ -1,54 +1,59 @@
 ﻿using UnityEngine;
 
-public class CameraController : MonoBehaviour {
-    private Transform target;
-    private Vector3 newPosition;
-    public SpriteRenderer bgSpriteRenderer;
-    public float rightCameraOffset;
-    public float speed;
-    public float xMin;
-    
-    void Start() {
-        if (bgSpriteRenderer) {
-            AdjustBackgroundImage(bgSpriteRenderer.sprite);
-            bgSpriteRenderer.sortingOrder = -6;
+namespace Controllers {
+    public class CameraController : MonoBehaviour {
+        public SpriteRenderer bgSpriteRenderer;
+        public float rightCameraOffset;
+        public float speed;
+        public float xMin;
+
+        private Transform target;
+        private Vector3 newPosition;
+        void Start() {
+            if (bgSpriteRenderer.sprite) {
+                AdjustBackgroundImage(bgSpriteRenderer.sprite);
+                if (ManualsController.sng) bgSpriteRenderer.sortingOrder = -6;
+            }
+            
+            target = Player.Player.sng.transform;
+            if (target)
+                transform.position = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset),
+                    transform.position.y,
+                    transform.position.z);
         }
 
-        target = Player.sng.transform;
-        if (target)
-            transform.position = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset), transform.position.y,
-                transform.position.z);
-    }
-
-    void FixedUpdate() {
-        if (target) {
-            newPosition = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset), transform.position.y,
-                transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, newPosition, speed * Time.deltaTime);
+        void FixedUpdate() {
+            if (target) {
+                newPosition = new Vector3(Mathf.Max(xMin, target.transform.position.x + rightCameraOffset),
+                    transform.position.y,
+                    transform.position.z);
+                transform.position = Vector3.Lerp(transform.position, newPosition, speed * Time.deltaTime);
+            }
         }
-    }
 
-    public SpriteRenderer AdjustBackgroundImage(Sprite bgSprite) {
-        bgSpriteRenderer.sortingOrder = 6;
-        bgSpriteRenderer.sprite = bgSprite;
-        //BACGROUND IMAGE SET
-        float cameraHeight = Camera.main.orthographicSize * 2;
-        Vector2 cameraSize = new Vector2(Camera.main.aspect * cameraHeight, cameraHeight);
-        Vector2 spriteSize = bgSpriteRenderer.sprite.bounds.size;
-        
-        Vector2 scale = bgSpriteRenderer.transform.localScale;
-        if (cameraSize.x <= cameraSize.y) { // Landscape (or equal)
-            scale *= cameraSize.x / spriteSize.x;
-        } else { // Portrait
-            scale *= cameraSize.y / spriteSize.y;
+        public SpriteRenderer AdjustBackgroundImage(Sprite bgSprite) {
+            bgSpriteRenderer.sortingOrder = 6;
+            bgSpriteRenderer.sprite = bgSprite;
+            //BACGROUND IMAGE SET
+            float cameraHeight = Camera.main.orthographicSize * 2;
+            Vector2 cameraSize = new Vector2(Camera.main.aspect * cameraHeight, cameraHeight);
+            Vector2 spriteSize = bgSpriteRenderer.sprite.bounds.size;
+
+            Vector2 scale = bgSpriteRenderer.transform.localScale;
+            if (cameraSize.x <= cameraSize.y) { // Landscape (or equal)
+                scale *= cameraSize.x / spriteSize.x;
+            }
+            else { // Portrait
+                scale *= cameraSize.y / spriteSize.y;
+            }
+
+            //bgSpriteRenderer.transform.position = Vector2.zero; // Optional
+            bgSpriteRenderer.transform.localScale = scale;
+            return bgSpriteRenderer;
         }
-        
-        //bgSpriteRenderer.transform.position = Vector2.zero; // Optional
-        bgSpriteRenderer.transform.localScale = scale;
-        return bgSpriteRenderer;
-    }
-    
-    public Transform Target {
-        set { target = value; }
+
+        public Transform Target {
+            set { target = value; }
+        }
     }
 }

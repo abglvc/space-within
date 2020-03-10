@@ -1,9 +1,10 @@
-﻿using System;
-using System.Transactions;
+﻿using Obstacles;
+using Pickups;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
+
+
+//THIS SCRIPT IS NOT OPTIMISED.
 
 public class GenerateObstaclePacks : MonoBehaviour {
     public int[] obstacleIndexes;
