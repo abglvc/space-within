@@ -1,4 +1,4 @@
-﻿#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import "NativeCallProxy.h"
 
 
@@ -14,6 +14,7 @@ id<NativeCallsProtocol> api = NULL;
 
 
 extern "C" {
-    void showMainWindow() { return [api showMainWindow:[]]; }
+    void showHostMainWindow() { return [api showHostMainWindow:[]]; }
+	void updateDepthFromSensor(const int* x) { return [api updateDepthFromSensor:[NSInteger x]]; }
 }
 

@@ -8,8 +8,8 @@ namespace Controllers {
         private Player.Player p;
 
 
-        [DllImport("__Internal")]
-        public static extern void showMainScreen(string service, string domain);
+        //[DllImport("__Internal")]
+        //public static extern void showMainScreen(string service, string domain);
 
 
         private void Awake() {
