@@ -12,7 +12,7 @@
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // x je trenutna vrijednost dubine ocitane sa senzora [0-8], jednostavna je i treba je implementovati u app-u
 // nakon cega ona salje dalje ka Unity objektu F1SLink koji ima na sebi funkciju UpdateDepthFromSensor i proslijedit mu string
-// jer samo tu vrstu podataka moze prenijeti kao poruku. 
+// jer samo tu vrstu podataka moze prenijeti kao poruku (nakon čega je parsiran string u igri).
 
 // JAVA KOD
 //	if (x != previousDepth) {
@@ -25,7 +25,7 @@
 // gdje je ufw unityframeworkload
 
 // sve detaljnije kako implementovati naci u primjeru za download "uaal-example" https://forum.unity.com/threads/integration-unity-as-a-library-in-native-ios-app.685219/
-// proci kroz MainViewController.mm 
+// proci kroz MainViewController.mm nakon pto se downloada primjer "uaal-example" (tu se demonstrira komunikacija tj primjer slanja informacije boje kocke iz app-a u igru)
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 - (void) updateDepthFromSensor:(NSInteger*)x;	
