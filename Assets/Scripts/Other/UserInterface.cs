@@ -49,7 +49,7 @@ namespace Other {
         }
 
         public void SliderDepthSensorUpdate() {
-            Player.Player.sng.UpdateDepth((int) sensorSlider.value);
+            //Player.Player.sng.UpdateDepth((int) sensorSlider.value);
         }
 
         private int previousDepth = 0;

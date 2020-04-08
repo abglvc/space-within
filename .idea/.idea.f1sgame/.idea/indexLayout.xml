@@ -21,6 +21,7 @@
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>androidBuild</Path>
+      <Path>iosBuild</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>
