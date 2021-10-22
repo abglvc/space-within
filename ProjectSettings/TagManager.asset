@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Obstahurt
+  - ObstaclePack
+  - ParallaxLayer
+  - PlayerProjectile
+  - ObstacleProjectile
+  - Enemy
+  - EndPortal
+  - StartPack
+  - ManualsOP
   layers:
   - Default
   - TransparentFX
@@ -13,11 +23,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerProjectiles
+  - Player
+  - EnemyProjectiles
+  - Enemies
+  - ObstacleProjectiles
   - 
   - 
   - 

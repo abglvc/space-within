@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\PC\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\PC\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_f1sgame.743773231.00" t="ExcludeRecursive" />
+    <e p="C:\Users\PC\Desktop\Android\f1sgame" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scenes" t="Include">
+          <e p="Generate Obstacle Packs" t="Include">
+            <e p="GenerateObstaclePacks.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="CameraController.cs" t="Include" />
+            <e p="F1SLink.cs" t="Include" />
+            <e p="FreerunGC.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="LevelGC.cs" t="Include" />
+            <e p="ManualsController.cs" t="Include" />
+          </e>
+          <e p="Obstacles" t="Include">
+            <e p="DestructableObstacle.cs" t="Include" />
+            <e p="Enemy.cs" t="Include" />
+            <e p="Enemyhurt.cs" t="Include" />
+            <e p="Obstacle.cs" t="Include" />
+            <e p="ObstaclePack.cs" t="Include" />
+            <e p="Obstahurt.cs" t="Include" />
+            <e p="Portal.cs" t="Include" />
+            <e p="Projectile.cs" t="Include" />
+            <e p="RotaSpikes.cs" t="Include" />
+          </e>
+          <e p="Other" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+            <e p="Consingletone.cs" t="Include" />
+            <e p="DAO.cs" t="Include" />
+            <e p="DataStorage.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
+            <e p="ObjectPool.cs" t="Include" />
+            <e p="TextColorLoop.cs" t="Include" />
+            <e p="UserInterface.cs" t="Include" />
+          </e>
+          <e p="Parallax" t="Include">
+            <e p="LayerImage.cs" t="Include" />
+            <e p="ParallaxLayer.cs" t="Include" />
+          </e>
+          <e p="Pickups" t="Include">
+            <e p="HealthPickup.cs" t="Include" />
+            <e p="Pickup.cs" t="Include" />
+            <e p="PowerPickup.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="Player.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="f1sgame.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
